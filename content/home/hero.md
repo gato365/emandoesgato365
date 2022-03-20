@@ -21,6 +21,8 @@ design:
 advanced:
   css_class: fullscreen
 ---
+## Remove the title
+active: false
 
 **The FREE, Hugo-based open source website builder and template trusted by 500,000+ sites.**
 
