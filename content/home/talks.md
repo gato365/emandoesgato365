@@ -3,6 +3,9 @@
 # Documentation: https://wowchemy.com/docs/page-builder/
 widget: pages
 
+## remove recent talks component
+active: false
+
 # This file represents a page section.
 headless: true
 
