@@ -6,7 +6,8 @@ widget: portfolio
 # This file represents a page section.
 headless: true
 
-
+# no project is shown
+active: false
 
 
 # Order that this section appears on the page.
