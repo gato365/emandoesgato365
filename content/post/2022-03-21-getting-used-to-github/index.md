@@ -1,10 +1,10 @@
 ---
 title: Getting Used to GitHub
-author: ''
+author: 'Immanuel Williams PhD'
 date: '2022-03-21'
 slug: getting-used-to-github
 categories: []
-tags: []
+tags: [data science, github]
 subtitle: ''
 summary: ''
 authors: []
@@ -114,7 +114,7 @@ More steps:
 - Click Developer settings (bottom on the left of Screen) 
 - Click on Personal access tokens
 - Click Generate new token 
-- Type 'personal key for R Studio' or something relating to what you are doing with github and R Studio
+- Type personal key for R Studio' or something relating to what you are doing with github and R Studio
 - Set Expiration Date (three months)
 - Click the repo check box (there are many others but this is the only one needed for our purposes)
 - Click Generate Token
