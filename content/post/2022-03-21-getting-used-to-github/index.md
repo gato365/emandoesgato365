@@ -75,18 +75,19 @@ https://github.com/gato365/learningAboutGitHub.git
 **Step 6:** Paste https://github.com/gato365/learningAboutGitHub.git where it says "URL for your Git Repository" Click OK
 
 
-Some Terminology we should know be aware of:
+### 4. Some Terminology we should be aware of:
 
-**Commit** - 
+**Commit** - a snapshot of your repository at a specific point in time in your coding process
 
-**Push** - 
+**Push** - post snapshot on GitHub
 
-**Pull** - 
+#### Not discussed in post
+**Pull** - used to gather and download material within a repo from a remote repo and immediately update the local repo to match the material
 
-**Fork** - 
+**Fork** - a copy of a repository that you manage without modifying the original repo
 
 
-### 4. Commiting and Pushing your First File to GitHub
+### 5. Commiting and Pushing your First File to GitHub
 
 **Step 1:** Create a R markdown file and delete content 
 for fun: create a histogram of mpg from the mtcars data frame 
@@ -103,15 +104,45 @@ for fun: create a histogram of mpg from the mtcars data frame
 
 **Step 7:** Click commit press *OK* then click *Push*
 
-**Step 8:** Type your Login username for GitHub 
+#### *The following steps are for R Studio Cloud*
+**Step 8:** A screen will pop-up and you should type your login username for GitHub and Click *OK*
 
-#### We need to go back to GitHub to get
-(More steps: Settings - Tokens - Generate Tokens - Set date - copy token save in a good location) Go to GitHub and view the change erase the code regarding the histogram and plot a scatter plot between mpg and wt within mtcars Save file Follow the process to commit and push. Now click on pull and you can see both versions of the code you created
+*We need to go back to GitHub to get*
+More steps: 
+
+- Click Settings under your profile
+- Click Developer settings (bottom on the left of Screen) 
+- Click on Personal access tokens
+- Click Generate new token 
+- Type 'personal key for R Studio' or something relating to what you are doing with github and R Studio
+- Set Expiration Date (three months)
+- Click the repo check box (there are many others but this is the only one needed for our purposes)
+- Click Generate Token
+- Copy token save in a good location within a text file on your computer
+
+**Step 9:** Copy and paste token in the box for the password and Click *OK*
+
+**Step 10:** Go to GitHub and go to your Repo Folder (Under Profile, Click Repositories), your file should be there
+
+There is a more technical way to do this using the terminal but I will not cover this here.
+
+
+### Check the Power of GitHub
+**Step 1:** Now erase the code in R Studio that you made for the histogram and create a scatter plot between mpg and wt within mtcars
+
+**Step 2:** Save the file and follow the process to commit and push (you do not have to generate a new token, you can use it for the specified time) 
+
+**Step 3:** Now click on *History* and you can see both versions of the code you created
 
 
 
 
-Additional Resources
+Additional Resources:
+
+- Commit -- https://www.gitkraken.com/learn/git/commit
+- Pull -- https://www.atlassian.com/git/tutorials/syncing/git-pull
+- Generate GitHub Tokens -- https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token
+- Fork -- https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/about-forks
 
 
 
