@@ -18,7 +18,25 @@ projects: []
 ---
 
 
-Trying to see what this does...
+
+### Some Important Questions 
+
+**Question 1:** What is GitHub?  
+
+*Answer 1:* version control, in other words, it allows programmers the ability to track and control changes to their code
+
+
+**Question 2:** Why is it important?
+
+*Answer 2:* GitHub is important because it allows for seamless collaboration without compromising the integrity of the original project
+
+
+### Some Great GitHub Profiles include:
+
+Hadley Wickham (inventor of tidyverse) - https://github.com/hadley 
+
+Devon Carew (random guy who works at Google) - https://github.com/devoncarew
+
 
 
 
