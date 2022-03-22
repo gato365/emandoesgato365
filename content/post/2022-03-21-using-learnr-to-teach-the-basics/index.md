@@ -15,6 +15,7 @@ image:
   focal_point: ''
   preview_only: no
 projects: []
+active: false
 ---
 
 # Designing 1st Activity with learnr & grader
@@ -26,7 +27,9 @@ Advice before getting started
 
 1. Know what you are going to talk about before hand
 2. List out all your thoughts before coding
-3. Think of questions and write them down as you go along
+3. Think of questions that you would want your students to answer and write them down as you go along
+4. Open-Ended Questions are the best but we are not there yet
+5.
 
 
 
