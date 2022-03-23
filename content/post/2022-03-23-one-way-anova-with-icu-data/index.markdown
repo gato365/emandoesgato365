@@ -1,17 +1,17 @@
 ---
 title: One-Way ANOVA with ICU Data (Part I)
-author: ''
+author: 'Immanuel Williams PhD'
 date: '2022-03-23'
 slug: one-way-anova-with-icu-data
 categories: []
-tags: [ANOVA, statistics, R, Simulation Based Inference]
+tags: [ANOVA, statistics, R, Simulation Based Inference, One-Way ANOVA,]
 subtitle: ''
-summary: ''
+summary: 'Using ICU data to implement One-Way ANOVA.'
 authors: []
 lastmod: '2022-03-23T19:26:20Z'
 featured: no
 image:
-  caption: ''
+  caption: 'ddUsing ICU data to implement One-Way ANOVA.'
   focal_point: ''
   preview_only: no
 projects: []
@@ -105,14 +105,21 @@ ICU %>%
   geom_boxplot() +
   theme_bw() + 
   scale_fill_manual(values=c("#999999", "#E69F00", "#56B4E9")) +
+  stat_summary(fun="mean", color="red", shape=15, size = 1.2) +
   labs(x = 'Age Group', 
        y = 'Systolic Blood Pressure', 
        title = 'Boxplots of Systolic Blood \n Pressure Across Age Groups') +
   theme(plot.title = element_text(hjust = 0.5, size = 15, face = 'bold'),
-        axis.title = element_text(size = 10, color = 'black'))
+        axis.title = element_text(size = 10, color = 'black'), legend.position = 'NONE') 
 ```
 
 <img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-3-1.png" width="672" />
+
+*General Comments:*
+
+- The red square are the means, whereas, the horizontal line in the middle. These values are approximately the same for all three groups
+- Group 1 and 2 have outliers
+
 
 
 Do we have evidence against this claim in the statistical question? 
