@@ -16,12 +16,10 @@ image:
   preview_only: no
 projects: []
 ---
+<script src="{{< blogdown/postref >}}index_files/kePrint/kePrint.js"></script>
+<link href="{{< blogdown/postref >}}index_files/lightable/lightable.css" rel="stylesheet" />
 
 
-```r
-library(tidyverse)
-load("/cloud/project/content/post/2022-03-23-one-way-anova-with-icu-data/ICU.rda")
-```
 
 
 ## Context of Data:
@@ -39,36 +37,85 @@ load("/cloud/project/content/post/2022-03-23-one-way-anova-with-icu-data/ICU.rda
 8. Pulse: Quantitative
 9. Emergency: Categorical Binary (0: not an emergency ,1: emergency)
 
-Statistical Question: 
+## The Statistical Question: 
 
 Is the population mean of systolic blood pressure the same across Age Groups?
 
 Using Symbols:
 `$$\mu_1 = \mu_2 = \mu_3$$`
 
+Before we discuss this statistical question, lets summarize and visualize the data that are used in this statistical question.
+
+## Summarize the data
 
 ```r
 ICU %>% 
   group_by(AgeGroup) %>% 
   summarise(`Sample Size` = n(),
             `Mean of Systolic Blood Pressure` = round(mean(SysBP,na.rm =TRUE),3),
-            `SD of Systolic Blood Pressure` = round(sd(SysBP,na.rm =TRUE),3))
+            `SD of Systolic Blood Pressure` = round(sd(SysBP,na.rm =TRUE),3)) %>% 
+  kable() %>% 
+  kable_styling(position = 'center') %>% 
+  row_spec(0,bold = TRUE)
 ```
 
+<table class="table" style="margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:right;font-weight: bold;"> AgeGroup </th>
+   <th style="text-align:right;font-weight: bold;"> Sample Size </th>
+   <th style="text-align:right;font-weight: bold;"> Mean of Systolic Blood Pressure </th>
+   <th style="text-align:right;font-weight: bold;"> SD of Systolic Blood Pressure </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 59 </td>
+   <td style="text-align:right;"> 129.847 </td>
+   <td style="text-align:right;"> 22.001 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 77 </td>
+   <td style="text-align:right;"> 133.026 </td>
+   <td style="text-align:right;"> 39.408 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 64 </td>
+   <td style="text-align:right;"> 133.625 </td>
+   <td style="text-align:right;"> 33.208 </td>
+  </tr>
+</tbody>
+</table>
+*General Comments:*
+
+- The sample sizes are not the same but that is not an issue.
+- The means for group 2 and 3 are approximately the same
+- The equal variance assumption should not be an issue `\(s_{max}/s_{min} = 1.5\)`
+
+
+## Visualize the data
+
+```r
+ICU %>% 
+  mutate(AgeGroup = as.factor(AgeGroup) )%>% 
+  ggplot(aes(x = AgeGroup, y = SysBP , fill = AgeGroup)) +
+  geom_boxplot() +
+  theme_bw() + 
+  scale_fill_manual(values=c("#999999", "#E69F00", "#56B4E9")) +
+  labs(x = 'Age Group', 
+       y = 'Systolic Blood Pressure', 
+       title = 'Boxplots of Systolic Blood \n Pressure Across Age Groups') +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = 'bold'),
+        axis.title = element_text(size = 10, color = 'black'))
 ```
-## # A tibble: 3 × 4
-##   AgeGroup `Sample Size` `Mean of Systolic Blood Pressure` `SD of Systolic Blo…`
-##      <int>         <int>                             <dbl>                 <dbl>
-## 1        1            59                              130.                  22.0
-## 2        2            77                              133.                  39.4
-## 3        3            64                              134.                  33.2
-```
+
+<img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-3-1.png" width="672" />
 
 
-
-
-
-Do we have evidence against this claim? 
+Do we have evidence against this claim in the statistical question? 
 
 In other words, if we assume that the population means of systolic blood pressure are the same for all 3 Age Groups, what is the likelihood of observing these means with this sample?
 

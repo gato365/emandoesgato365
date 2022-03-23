@@ -17,8 +17,9 @@ image:
 projects: []
 ---
 
-```{r message=FALSE, warning=FALSE}
+```{r message=FALSE, warning=FALSE, echo=FALSE}
 library(tidyverse)
+library(kableExtra)
 load("/cloud/project/content/post/2022-03-23-one-way-anova-with-icu-data/ICU.rda")
 ```
 
@@ -38,27 +39,53 @@ load("/cloud/project/content/post/2022-03-23-one-way-anova-with-icu-data/ICU.rda
 8. Pulse: Quantitative
 9. Emergency: Categorical Binary (0: not an emergency ,1: emergency)
 
-Statistical Question: 
+## The Statistical Question: 
 
 Is the population mean of systolic blood pressure the same across Age Groups?
 
 Using Symbols:
 $$\mu_1 = \mu_2 = \mu_3$$
 
+Before we discuss this statistical question, lets summarize and visualize the data that are used in this statistical question.
+
+## Summarize the data
 ```{r message=FALSE, warning=FALSE}
 ICU %>% 
   group_by(AgeGroup) %>% 
   summarise(`Sample Size` = n(),
             `Mean of Systolic Blood Pressure` = round(mean(SysBP,na.rm =TRUE),3),
-            `SD of Systolic Blood Pressure` = round(sd(SysBP,na.rm =TRUE),3))
+            `SD of Systolic Blood Pressure` = round(sd(SysBP,na.rm =TRUE),3)) %>% 
+  kable() %>% 
+  kable_styling(position = 'center') %>% 
+  row_spec(0,bold = TRUE)
 
+
+
+```
+*General Comments:*
+
+- The sample sizes are not the same but that is not an issue.
+- The means for group 2 and 3 are approximately the same
+- The equal variance assumption should not be an issue $s_{max}/s_{min} = 1.5$
+
+
+## Visualize the data
+```{r message=FALSE, warning=FALSE}
+ICU %>% 
+  mutate(AgeGroup = as.factor(AgeGroup) )%>% 
+  ggplot(aes(x = AgeGroup, y = SysBP , fill = AgeGroup)) +
+  geom_boxplot() +
+  theme_bw() + 
+  scale_fill_manual(values=c("#999999", "#E69F00", "#56B4E9")) +
+  labs(x = 'Age Group', 
+       y = 'Systolic Blood Pressure', 
+       title = 'Boxplots of Systolic Blood \n Pressure Across Age Groups') +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = 'bold'),
+        axis.title = element_text(size = 10, color = 'black'))
 ```
 
 
-
-
-
-Do we have evidence against this claim? 
+Do we have evidence against this claim in the statistical question? 
 
 In other words, if we assume that the population means of systolic blood pressure are the same for all 3 Age Groups, what is the likelihood of observing these means with this sample?
 
