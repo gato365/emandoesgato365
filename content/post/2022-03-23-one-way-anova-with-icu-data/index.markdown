@@ -10,12 +10,14 @@ summary: 'Using ICU data to implement One-Way ANOVA.'
 authors: []
 lastmod: '2022-03-23T19:26:20Z'
 featured: no
-image:
-  caption: 'ddUsing ICU data to implement One-Way ANOVA.'
-  focal_point: ''
+image: 
+  caption: 'One-Way ANOVA.'
+  focal_point: 'boxplots_icu.png'
   preview_only: no
 projects: []
 ---
+<script src="{{< blogdown/postref >}}index_files/kePrint/kePrint.js"></script>
+<link href="{{< blogdown/postref >}}index_files/lightable/lightable.css" rel="stylesheet" />
 <script src="{{< blogdown/postref >}}index_files/kePrint/kePrint.js"></script>
 <link href="{{< blogdown/postref >}}index_files/lightable/lightable.css" rel="stylesheet" />
 
@@ -130,3 +132,51 @@ In other words, if we assume that the population means of systolic blood pressur
 
 - Whereas, the smaller the likelihood is, the more evidence we have against the claim that the population means of systolic blood pressure are the same across Age Groups. 
 
+
+
+
+```r
+a <- aov(SysBP ~ as.factor(AgeGroup), data = ICU)
+tidy(a) %>% 
+  kable() %>% 
+  kable_styling()
+```
+
+<table class="table" style="margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;"> term </th>
+   <th style="text-align:right;"> df </th>
+   <th style="text-align:right;"> sumsq </th>
+   <th style="text-align:right;"> meansq </th>
+   <th style="text-align:right;"> statistic </th>
+   <th style="text-align:right;"> p.value </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> as.factor(AgeGroup) </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 507.7448 </td>
+   <td style="text-align:right;"> 253.8724 </td>
+   <td style="text-align:right;"> 0.231998 </td>
+   <td style="text-align:right;"> 0.7931641 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Residuals </td>
+   <td style="text-align:right;"> 197 </td>
+   <td style="text-align:right;"> 215574.5752 </td>
+   <td style="text-align:right;"> 1094.2872 </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+  </tr>
+</tbody>
+</table>
+
+
+*Comments:*
+
+- p-value indicates the likelihood of observing these differences between the sample means given the null hypothesis is true
+- Since the p-value is large (*>0.05*), it is very likely for us to see these differences given the population means of systolic blood pressure across age groups are the same
+
+<!-- Q1. What are the ages within each age group? Answer this question using programming -->

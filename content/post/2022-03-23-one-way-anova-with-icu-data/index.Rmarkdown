@@ -10,9 +10,9 @@ summary: 'Using ICU data to implement One-Way ANOVA.'
 authors: []
 lastmod: '2022-03-23T19:26:20Z'
 featured: no
-image:
-  caption: 'ddUsing ICU data to implement One-Way ANOVA.'
-  focal_point: ''
+image: 
+  caption: 'One-Way ANOVA.'
+  focal_point: 'boxplots_icu.png'
   preview_only: no
 projects: []
 ---
@@ -20,6 +20,8 @@ projects: []
 ```{r message=FALSE, warning=FALSE, echo=FALSE}
 library(tidyverse)
 library(kableExtra)
+library(broom)
+library(tidymodels)
 load("/cloud/project/content/post/2022-03-23-one-way-anova-with-icu-data/ICU.rda")
 ```
 
@@ -100,3 +102,19 @@ In other words, if we assume that the population means of systolic blood pressur
 
 - Whereas, the smaller the likelihood is, the more evidence we have against the claim that the population means of systolic blood pressure are the same across Age Groups. 
 
+
+
+```{r}
+a <- aov(SysBP ~ as.factor(AgeGroup), data = ICU)
+tidy(a) %>% 
+  kable() %>% 
+  kable_styling()
+```
+
+
+*Comments:*
+
+- p-value indicates the likelihood of observing these differences between the sample means given the null hypothesis is true
+- Since the p-value is large (*>0.05*), it is very likely for us to see these differences given the population means of systolic blood pressure across age groups are the same
+
+<!-- Q1. What are the ages within each age group? Answer this question using programming -->
