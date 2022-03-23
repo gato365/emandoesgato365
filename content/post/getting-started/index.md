@@ -9,7 +9,7 @@ date: "2020-12-13T00:00:00Z"
 draft: false
 featured: false
 image:
-  caption: 'Image credit: [**Unsplash**](/cloud/project/content/post/2022-03-23-one-way-anova-with-icu-data/boxplots_icu.png)'
+  caption: 'Image credit: [**Unsplash**](https://unsplash.com/photos/SqhcwFqVlyI)'
   focal_point: ""
   placement: 2
   preview_only: false
