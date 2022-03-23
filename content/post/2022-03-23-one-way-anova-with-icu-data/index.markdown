@@ -10,10 +10,8 @@ summary: 'Using ICU data to implement One-Way ANOVA.'
 authors: []
 lastmod: '2022-03-23T19:26:20Z'
 featured: no
-image: 
-  caption: 'One-Way ANOVA.'
-  focal_point: 'boxplots_icu.png'
-  preview_only: no
+image:
+  focal_point: "/cloud/project/content/post/2022-03-23-one-way-anova-with-icu-data/boxplots_icu.png"
 projects: []
 ---
 <script src="{{< blogdown/postref >}}index_files/kePrint/kePrint.js"></script>
