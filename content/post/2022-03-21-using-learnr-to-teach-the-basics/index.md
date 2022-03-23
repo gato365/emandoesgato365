@@ -8,7 +8,7 @@ tags: [statistics, data science, tidyverse, learnr, grader]
 subtitle: ''
 summary: ''
 authors: []
-lastmod: '2022-03-21T22:36:23Z'
+lastmod: '2022-03-25T22:36:23Z'
 featured: no
 image:
   caption: ''
@@ -18,7 +18,7 @@ projects: []
 active: false
 ---
 
-# Designing 1st Activity with learnr & grader
+# Designing an Activity with learnr & grader
 
 This is not for the faint... It is not hard if you already know the ins and outs of R markdown but the level of creativity is on a different level.
 
