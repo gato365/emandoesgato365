@@ -1,7 +1,7 @@
 ---
-title: One-Way ANOVA with ICU Data (Part I)
+title: One-Way ANOVA with GPA Data (Part I)
 author: 'Immanuel Williams PhD'
-date: '2022-03-23'
+date: '2022-03-26'
 slug: one-way-anova-with-icu-data
 categories: []
 tags: [ANOVA, statistics, R, Simulation Based Inference, One-Way ANOVA,]
@@ -20,7 +20,7 @@ library(tidyverse)
 library(kableExtra)
 library(broom)
 library(tidymodels)
-load("/cloud/project/content/post/2022-03-23-one-way-anova-with-icu-data/ICU.rda")
+sports_df = read.csv('sports.csv')
 ```
 
 
@@ -29,32 +29,26 @@ load("/cloud/project/content/post/2022-03-23-one-way-anova-with-icu-data/ICU.rda
 
 ## Variables in Data Set
 
-1. ID: Not a variable
-2. Survive: Categorical Binary (0: survived, 1: did not survived)
-3. Age: Quantitative
-4. AgeGroup: Categorical (1: young ,2: middle age,3: old)
-5. Sex: Categorical Binary
-6. Infection: Categorical Binary (0: not infected ,1: infected )
-7. SysBP: Quantitative
-8. Pulse: Quantitative
-9. Emergency: Categorical Binary (0: not an emergency ,1: emergency)
+1: Survival - Quantitative number of people survived
+2: Organ  - Categorical (Breast, Bronchus, Colon, Ovary, Stomach)
+
 
 ## The Statistical Question: 
 
-Is the population mean of systolic blood pressure the same across Age Groups?
+Is the population mean of Survival the same across the types of organ cancer?
 
 Using Symbols:
-$$\mu_1 = \mu_2 = \mu_3$$
+$$\mu_1 = \mu_2 = \mu_3 = \mu_4 = \mu_5$$
 
 Before we discuss this statistical question, lets summarize and visualize the data that are used in this statistical question.
 
 ## Summarize the data
 ```{r message=FALSE, warning=FALSE}
-ICU %>% 
-  group_by(AgeGroup) %>% 
+CancerSurvival %>% 
+  group_by(Organ) %>% 
   summarise(`Sample Size` = n(),
-            `Mean of Systolic Blood Pressure` = round(mean(SysBP,na.rm =TRUE),3),
-            `SD of Systolic Blood Pressure` = round(sd(SysBP,na.rm =TRUE),3)) %>% 
+            `Mean of Survival` = round(mean(Survival,na.rm =TRUE),3),
+            `SD of Survival` = round(sd(Survival,na.rm =TRUE),3)) %>% 
   kable() %>% 
   kable_styling(position = 'center') %>% 
   row_spec(0,bold = TRUE)
@@ -66,21 +60,20 @@ ICU %>%
 
 - The sample sizes are not the same but that is not an issue.
 - The means for group 2 and 3 are approximately the same
-- The equal variance assumption should not be an issue $s_{max}/s_{min} = 1.5$
+- The equal variance assumption should not be an issue $s_{max}/s_{min} < 2$
 
 
 ## Visualize the data
 ```{r message=FALSE, warning=FALSE}
-ICU %>% 
-  mutate(AgeGroup = as.factor(AgeGroup) )%>% 
-  ggplot(aes(x = AgeGroup, y = SysBP , fill = AgeGroup)) +
+CancerSurvival %>% 
+  ggplot(aes(x = Organ, y = Survival, fill = Organ)) +
   geom_boxplot() +
   theme_bw() + 
-  scale_fill_manual(values=c("#999999", "#E69F00", "#56B4E9")) +
-  stat_summary(fun="mean", color="red", shape=15, size = 1.2) +
+  # scale_fill_manual(values=c("#999999", "#E69F00", "#56B4E9")) +
+  stat_summary(fun="mean", color="red", shape=10, size = 0.9) +
   labs(x = 'Age Group', 
-       y = 'Systolic Blood Pressure', 
-       title = 'Boxplots of Systolic Blood \n Pressure Across Age Groups') +
+       y = 'Survival', 
+       title = 'Survival Across Types of Cancers') +
   theme(plot.title = element_text(hjust = 0.5, size = 15, face = 'bold'),
         axis.title = element_text(size = 10, color = 'black'), legend.position = 'NONE') 
 ```
@@ -103,7 +96,7 @@ In other words, if we assume that the population means of systolic blood pressur
 
 
 ```{r}
-a <- aov(SysBP ~ as.factor(AgeGroup), data = ICU)
+a <- aov(Survival ~ Organ, data = CancerSurvival)
 tidy(a) %>% 
   kable() %>% 
   kable_styling()
