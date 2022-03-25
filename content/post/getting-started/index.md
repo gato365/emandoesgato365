@@ -13,6 +13,7 @@ image:
   focal_point: ""
   placement: 2
   preview_only: false
+active: false
 lastmod: "2020-12-13T00:00:00Z"
 projects: []
 subtitle: "Welcome \U0001F44B We know that first impressions are important, so we've
