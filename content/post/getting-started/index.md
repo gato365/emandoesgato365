@@ -9,7 +9,7 @@ date: "2020-12-13T00:00:00Z"
 draft: false
 featured: true
 image:
-  caption: 'Image credit: [**Unsplash**](https://unsplash.com/photos/SqhcwFqVlyI)'
+  caption: 'Image credit: [**Yo**](https://unsplash.com/photos/SqhcwFqVlyI)'
   focal_point: ""
   placement: 2
   preview_only: false
