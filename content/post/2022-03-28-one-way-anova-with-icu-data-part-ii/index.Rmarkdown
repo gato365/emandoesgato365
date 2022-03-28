@@ -43,11 +43,17 @@ $$\mu_1 = \mu_2 = \mu_3 = \mu_4 $$
 
 If we assume the null hypothesis to be true, it does not matter how we label each student because each sport's mean is equal to the same value.
 
-So let's randomly assign a student to a sport what is the likelihood of observing these difference between the means (measured in the test statistic).
+So let's randomly assign a student to a sport and determine what is the likelihood of observing the difference between the means of GPA (measured in the test statistic) that we actually observed in the previous post.
 
-This brain activity is important because it gives us the chances of observing such a difference between groups if the null hypothesis is true.
+This brain activity is important because it gives us the chances of observing such a difference between sport's mean GPA if the null hypothesis is true.
 
 
+```{r}
+mod_sports_df = sports_df[sample(1:nrow(sports_df)),  ] 
+```
 
-If we take the sport of each student and randomly assort them, what is the likelihood that we will observe such a test statistic. 
+<!-- Other Way -->
+<!-- https://recipes.tidymodels.org/reference/step_shuffle.html -->
+
+
 
