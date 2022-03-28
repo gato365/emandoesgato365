@@ -1,0 +1,53 @@
+---
+title: One-Way ANOVA with GPA Data Part II
+author: ''
+date: '2022-03-29'
+slug: one-way-anova-with-gpa-data-part-ii
+categories: []
+tags: [ANOVA, statistics, R, Simulation Based Inference, One-Way ANOVA,]
+subtitle: ''
+summary: ''
+authors: []
+lastmod: '2022-03-28T19:38:40Z'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+
+
+{{< toc >}} 
+
+
+
+```{r message=FALSE, warning=FALSE, echo=FALSE}
+library(tidyverse)
+library(kableExtra)
+library(broom)
+library(tidymodels)
+
+sports_df = read.csv('/cloud/project/content/post/2022-03-23-one-way-anova-with-icu-data/sports.csv')
+```
+
+
+## Going a bit deeper
+We have to remember what the null hypothesis is.
+
+The null is that the population means of GPA are the same across the sports.
+
+Using Symbols:
+$$\mu_1 = \mu_2 = \mu_3 = \mu_4 $$
+
+If we assume the null hypothesis to be true, it does not matter how we label each student because each sport's mean is equal to the same value.
+
+So let's randomly assign a student to a sport what is the likelihood of observing these difference between the means (measured in the test statistic).
+
+This brain activity is important because it gives us the chances of observing such a difference between groups if the null hypothesis is true.
+
+
+
+If we take the sport of each student and randomly assort them, what is the likelihood that we will observe such a test statistic. 
+

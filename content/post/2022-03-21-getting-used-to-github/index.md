@@ -143,6 +143,7 @@ Additional Resources:
 - Pull -- https://www.atlassian.com/git/tutorials/syncing/git-pull
 - Generate GitHub Tokens -- https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token
 - Fork -- https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/about-forks
+- Revert - https://r-pkgs.org/git.html, more details https://sethrobertson.github.io/GitFixUm/fixup.html
 
 
 
