@@ -6,7 +6,7 @@ slug: getting-used-to-github
 categories: []
 tags: [data science, github]
 subtitle: ''
-summary: ''
+summary: 'It is always good use version control.'
 authors: []
 lastmod: '2022-03-21T16:06:30Z'
 featured: no
