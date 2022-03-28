@@ -1,7 +1,7 @@
 ---
 title: My Passion for Data Science Presentations
 author: ''
-date: '2022-03-26'
+date: '2022-04-04'
 slug: my-passion-for-data-science-presentations
 categories: []
 tags: []
