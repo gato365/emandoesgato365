@@ -1,114 +1,125 @@
 ---
-title: One-Way ANOVA with ICU Data (Part I)
+title: One-Way ANOVA with GPA Data (Part I - Superficial)
 author: 'Immanuel Williams PhD'
-date: '2022-03-23'
-slug: one-way-anova-with-icu-data
+date: '2022-03-26'
+slug: one-way-anova-with-gpa-data
 categories: []
 tags: [ANOVA, statistics, R, Simulation Based Inference, One-Way ANOVA,]
 subtitle: ''
-summary: 'Using ICU data to implement One-Way ANOVA.'
+summary: 'Using simulated GPA data to implement One-Way ANOVA.'
 authors: []
 lastmod: '2022-03-23T19:26:20Z'
 featured: no
 image:
-  focal_point: "/cloud/project/content/post/2022-03-23-one-way-anova-with-icu-data/boxplots_icu.png"
-projects: []
+projects: [] 
 ---
 <script src="{{< blogdown/postref >}}index_files/kePrint/kePrint.js"></script>
 <link href="{{< blogdown/postref >}}index_files/lightable/lightable.css" rel="stylesheet" />
 <script src="{{< blogdown/postref >}}index_files/kePrint/kePrint.js"></script>
 <link href="{{< blogdown/postref >}}index_files/lightable/lightable.css" rel="stylesheet" />
 
+{{< toc >}} 
+
+
+
+
+
 
 
 
 ## Context of Data:
-(Get From STAT Book)
+
+This data set was generated for the purpose of teaching One- & Two- Way ANOVA. This example  includes three different variables: GPA, sport, whether the student drives to school or not. Within this post I will discuss how to summarize, visualize, and analyze the data.
+
 
 ## Variables in Data Set
 
-1. ID: Not a variable
-2. Survive: Categorical Binary (0: survived, 1: did not survived)
-3. Age: Quantitative
-4. AgeGroup: Categorical (1: young ,2: middle age,3: old)
-5. Sex: Categorical Binary
-6. Infection: Categorical Binary (0: not infected ,1: infected )
-7. SysBP: Quantitative
-8. Pulse: Quantitative
-9. Emergency: Categorical Binary (0: not an emergency ,1: emergency)
+1: GPA - Quantitative 
+2: sport  - Categorical (soccer, basketball, baseball, football)
+3: drive - whether they drive or take the bus
+
 
 ## The Statistical Question: 
 
-Is the population mean of systolic blood pressure the same across Age Groups?
+Is the population mean of GPA the same across the types of sports?
 
 Using Symbols:
-`$$\mu_1 = \mu_2 = \mu_3$$`
+$$\mu_1 = \mu_2 = \mu_3 = \mu_4 $$
+Where 1: soccer, 2: is basketball, 3: baseball, and 4: football
+
 
 Before we discuss this statistical question, lets summarize and visualize the data that are used in this statistical question.
 
 ## Summarize the data
 
+
+
 ```r
-ICU %>% 
-  group_by(AgeGroup) %>% 
+sports_df %>% 
+  group_by(sport) %>% 
   summarise(`Sample Size` = n(),
-            `Mean of Systolic Blood Pressure` = round(mean(SysBP,na.rm =TRUE),3),
-            `SD of Systolic Blood Pressure` = round(sd(SysBP,na.rm =TRUE),3)) %>% 
-  kable() %>% 
-  kable_styling(position = 'center') %>% 
+            `Mean of GPA` = round(mean(gpa,na.rm =TRUE),3),
+            `SD of GPA` = round(sd(gpa,na.rm =TRUE),3))  %>% 
+  kable() %>%
+  kable_styling(position = 'center') %>%
   row_spec(0,bold = TRUE)
 ```
 
 <table class="table" style="margin-left: auto; margin-right: auto;">
  <thead>
   <tr>
-   <th style="text-align:right;font-weight: bold;"> AgeGroup </th>
+   <th style="text-align:left;font-weight: bold;"> sport </th>
    <th style="text-align:right;font-weight: bold;"> Sample Size </th>
-   <th style="text-align:right;font-weight: bold;"> Mean of Systolic Blood Pressure </th>
-   <th style="text-align:right;font-weight: bold;"> SD of Systolic Blood Pressure </th>
+   <th style="text-align:right;font-weight: bold;"> Mean of GPA </th>
+   <th style="text-align:right;font-weight: bold;"> SD of GPA </th>
   </tr>
  </thead>
 <tbody>
   <tr>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 59 </td>
-   <td style="text-align:right;"> 129.847 </td>
-   <td style="text-align:right;"> 22.001 </td>
+   <td style="text-align:left;"> baseball </td>
+   <td style="text-align:right;"> 12 </td>
+   <td style="text-align:right;"> 3.107 </td>
+   <td style="text-align:right;"> 0.042 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 2 </td>
-   <td style="text-align:right;"> 77 </td>
-   <td style="text-align:right;"> 133.026 </td>
-   <td style="text-align:right;"> 39.408 </td>
+   <td style="text-align:left;"> basketball </td>
+   <td style="text-align:right;"> 10 </td>
+   <td style="text-align:right;"> 2.603 </td>
+   <td style="text-align:right;"> 0.062 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 3 </td>
-   <td style="text-align:right;"> 64 </td>
-   <td style="text-align:right;"> 133.625 </td>
-   <td style="text-align:right;"> 33.208 </td>
+   <td style="text-align:left;"> football </td>
+   <td style="text-align:right;"> 15 </td>
+   <td style="text-align:right;"> 2.896 </td>
+   <td style="text-align:right;"> 0.059 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> soccer </td>
+   <td style="text-align:right;"> 11 </td>
+   <td style="text-align:right;"> 3.327 </td>
+   <td style="text-align:right;"> 0.046 </td>
   </tr>
 </tbody>
 </table>
 *General Comments:*
 
 - The sample sizes are not the same but that is not an issue.
-- The means for group 2 and 3 are approximately the same
-- The equal variance assumption should not be an issue `\(s_{max}/s_{min} = 1.5\)`
+- The sample mean GPA for football and soccer are dramatically different
+- The equal variance assumption should not be an issue because `\(\frac{s_{max}}{s_{min}} = 1.47 < 2\)`
 
 
 ## Visualize the data
 
 ```r
-ICU %>% 
-  mutate(AgeGroup = as.factor(AgeGroup) )%>% 
-  ggplot(aes(x = AgeGroup, y = SysBP , fill = AgeGroup)) +
+sports_df %>% 
+  ggplot(aes(x = sport, y = gpa, fill = sport)) +
   geom_boxplot() +
   theme_bw() + 
-  scale_fill_manual(values=c("#999999", "#E69F00", "#56B4E9")) +
-  stat_summary(fun="mean", color="red", shape=15, size = 1.2) +
-  labs(x = 'Age Group', 
-       y = 'Systolic Blood Pressure', 
-       title = 'Boxplots of Systolic Blood \n Pressure Across Age Groups') +
+  scale_fill_manual(values=c("#999999", "#E69F00", "#56B4E9",'#7CC439')) +
+  stat_summary(fun="mean", color="red", shape=10, size = 0.9) +
+  labs(x = 'Sports', 
+       y = 'GPA', 
+       title = 'GPA across Sports') +
   theme(plot.title = element_text(hjust = 0.5, size = 15, face = 'bold'),
         axis.title = element_text(size = 10, color = 'black'), legend.position = 'NONE') 
 ```
@@ -117,24 +128,24 @@ ICU %>%
 
 *General Comments:*
 
-- The red square are the means, whereas, the horizontal line in the middle. These values are approximately the same for all three groups
-- Group 1 and 2 have outliers
+- Medians are approximately equal to the means (the points)
+- The means do not appear to be equal
+- The order of GPAs (soccer> baseball > football > basketball)
 
 
 
 Do we have evidence against this claim in the statistical question? 
 
-In other words, if we assume that the population means of systolic blood pressure are the same for all 3 Age Groups, what is the likelihood of observing these means with this sample?
+In other words, if we assume that the population means of GPA are the same for all 4 sports, what is the likelihood of observing these means with this sample?
 
-- The larger the likelihood is, the more likely we will observe the sample means under the idea that the population means of systolic blood pressure are the same across Age Groups.
+- The larger the likelihood is, the more likely we will observe these sample means under the idea that the population means of GPA are the same across sports.
 
-- Whereas, the smaller the likelihood is, the more evidence we have against the claim that the population means of systolic blood pressure are the same across Age Groups. 
-
+- Whereas, the smaller the likelihood is, the more evidence we have against the claim that the population means of GPA are the same across sports.
 
 
 
 ```r
-a <- aov(SysBP ~ as.factor(AgeGroup), data = ICU)
+a <- aov(gpa ~ sport, data = sports_df)
 tidy(a) %>% 
   kable() %>% 
   kable_styling()
@@ -153,18 +164,18 @@ tidy(a) %>%
  </thead>
 <tbody>
   <tr>
-   <td style="text-align:left;"> as.factor(AgeGroup) </td>
-   <td style="text-align:right;"> 2 </td>
-   <td style="text-align:right;"> 507.7448 </td>
-   <td style="text-align:right;"> 253.8724 </td>
-   <td style="text-align:right;"> 0.231998 </td>
-   <td style="text-align:right;"> 0.7931641 </td>
+   <td style="text-align:left;"> sport </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 3.0462348 </td>
+   <td style="text-align:right;"> 1.0154116 </td>
+   <td style="text-align:right;"> 362.179 </td>
+   <td style="text-align:right;"> 0 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Residuals </td>
-   <td style="text-align:right;"> 197 </td>
-   <td style="text-align:right;"> 215574.5752 </td>
-   <td style="text-align:right;"> 1094.2872 </td>
+   <td style="text-align:right;"> 44 </td>
+   <td style="text-align:right;"> 0.1233592 </td>
+   <td style="text-align:right;"> 0.0028036 </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
   </tr>
@@ -174,7 +185,12 @@ tidy(a) %>%
 
 *Comments:*
 
-- p-value indicates the likelihood of observing these differences between the sample means given the null hypothesis is true
-- Since the p-value is large (*>0.05*), it is very likely for us to see these differences given the population means of systolic blood pressure across age groups are the same
+- p-value indicates the **likelihood** of observing these differences between the sample means given the null hypothesis is true
+
+- Since the p-value is small (*= 0*), it is very unlikely for us to see these differences given the population means of systolic blood pressure across age groups are the same
+
+
+## Next Post will be...
+My Simulation Based inference Approach
 
 <!-- Q1. What are the ages within each age group? Answer this question using programming -->
