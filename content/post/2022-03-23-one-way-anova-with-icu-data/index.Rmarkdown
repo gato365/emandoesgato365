@@ -11,7 +11,6 @@ authors: []
 lastmod: '2022-03-23T19:26:20Z'
 featured: no
 image:
-  focal_point: "/cloud/project/content/post/2022-03-23-one-way-anova-with-icu-data/boxplots_icu.png"
 projects: [] 
 ---
 
@@ -121,5 +120,9 @@ tidy(a) %>%
 - p-value indicates the **likelihood** of observing these differences between the sample means given the null hypothesis is true
 
 - Since the p-value is small (*= 0*), it is very unlikely for us to see these differences given the population means of systolic blood pressure across age groups are the same
+
+
+## Next Post will be...
+My Simulation Based inference Approach
 
 <!-- Q1. What are the ages within each age group? Answer this question using programming -->
