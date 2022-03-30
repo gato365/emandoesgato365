@@ -75,6 +75,14 @@ https://github.com/gato365/learningAboutGitHub.git
 **Step 6:** Paste https://github.com/gato365/learningAboutGitHub.git where it says "URL for your Git Repository" Click OK
 
 
+**Step 7:** Click on the Terminal on one of the panes
+Type the following information with your credentials:
+
+- git config --global user.name "YOUR FULL NAME"
+
+- git config --global user.email "YOUR EMAIL ADDRESS"
+
+
 ### 4. Some Terminology we should be aware of:
 
 **Commit** - a snapshot of your repository at a specific point in time in your coding process
@@ -135,6 +143,43 @@ There is a more technical way to do this using the terminal but I will not cover
 **Step 3:** Now click on *History* and you can see both versions of the code you created
 
 
+### 
+If you ever need to go back to a previous version of your code for some reason based on your actions, you must revert or back track. There are many reasons why you need a previous version of code, go [here](https://sethrobertson.github.io/GitFixUm/fixup.html) to determine what to do based on your reason. If you use the website above, it will ask you a series of question which will guide through the code you must run to get your code back into shape.
+
+I wanted to get my code into a version that I recently committed and these were the questions and answers that I had to answer:
+
+Q1: Have you committed?
+
+Ans 1: Yes, commits were made → 
+
+Q2: Do you have uncommitted stuff in your working directory?
+
+Ans 2: No, I have no changes/working directory is clean → 
+
+Q3: Have you committed?
+
+Ans 3: Yes, commits were made → 
+
+
+Q4: Have you pushed?
+
+Ans 4: Yes, pushes were made → 
+
+Q5: Can you make a positive commit to fix the problem and what is the fix class?
+
+Ans 5: Yes, I can make a new commit but the bad commit is a simple commit I want to totally remove
+
+
+Use the following code to revert within the terminal:
+
+
+git revert SHA 
+
+SHA is a hash ID that is assigned to each commit that is made
+
+To find the hash ID that corresponds to the version of the code your would like to restore, *click the Git* button. Then *click* History. 
+
+A list of your commits will appear and on the last column denotes the SHA for each commit. You can scroll down to find a version of your code that you would like.
 
 
 Additional Resources:
