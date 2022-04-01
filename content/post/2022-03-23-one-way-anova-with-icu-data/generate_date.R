@@ -3,10 +3,10 @@
 
 library(dplyr)
 ## gpa|sport|drive to school
-n = c(15,12,10,11)
+n = c(15,12,10,14)
 groups = c('football','baseball','basketball','soccer')
-mean_g = c(2.9,3.1,2.6,3.3)
-sd_g = c(0.08,0.06,0.07,0.05)
+mean_g = c(2.9,2.95,2.85,3.005)
+sd_g = c(0.185,0.185,0.185,0.185)
 
 
 

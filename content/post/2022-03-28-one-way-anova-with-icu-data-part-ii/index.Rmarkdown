@@ -1,10 +1,10 @@
 ---
 title: One-Way ANOVA with GPA Data Part II
 author: ''
-date: '2022-03-29'
+date: '2022-04-04'
 slug: one-way-anova-with-gpa-data-part-ii
 categories: []
-tags: [ANOVA, statistics, R, Simulation Based Inference, One-Way ANOVA,]
+tags: [ANOVA, statistics, R, Simulation Based Inference, One-Way ANOVA]
 subtitle: ''
 summary: ''
 authors: []
@@ -41,19 +41,140 @@ The null is that the population means of GPA are the same across the sports.
 Using Symbols:
 $$\mu_1 = \mu_2 = \mu_3 = \mu_4 $$
 
-If we assume the null hypothesis to be true, it does not matter how we label each student because each sport's mean is equal to the same value.
+If we assume the null hypothesis is true, it does not matter which sport a student plays, the mean GPA for each sport will approximately be the same.
 
-So let's randomly assign a student to a sport and determine what is the likelihood of observing the difference between the means of GPA (measured in the test statistic) that we actually observed in the previous post.
+So let's randomly assign a student to a sport and determine the likelihood of observing the mean and standard deviation GPA and of each sport (measured by the test statistic) that we actually observed in the previous post.
 
 This brain activity is important because it gives us the chances of observing such a difference between sport's mean GPA if the null hypothesis is true.
 
 
+This code randomly assigns a sport to each student
 ```{r}
-mod_sports_df = sports_df[sample(1:nrow(sports_df)),  ] 
+mod_sports_df = transform( sports_df, sport = sample(sport) )
 ```
 
-<!-- Other Way -->
-<!-- https://recipes.tidymodels.org/reference/step_shuffle.html -->
+
+1) The original data frame
+```{r}
+head(sports_df,4) %>% 
+  kable() %>% 
+  kable_styling(position = 'center') %>%
+  row_spec(0,bold = TRUE) %>% 
+  column_spec(1:2,bold = TRUE,color = 'red')
+```
+
+2) Randomly assign sports data frame
+```{r}
+head(mod_sports_df,4) %>% 
+  kable() %>% 
+  kable_styling(position = 'center') %>%
+  row_spec(0,bold = TRUE) %>% 
+  column_spec(1:2,bold = TRUE,color = 'red')
+```
+
+
+
+As you can see the first two columns within both data frames are the same while the sport in the randomly assign data frame is different from the original.
+
+### Lets Summarize, Visualize, and Analyze this new data frame
+
+## Summarize
+
+```{r message=FALSE, warning=FALSE}
+mod_sports_df %>% 
+  group_by(sport) %>% 
+  summarise(`Sample Size` = n(),
+            `Mean of GPA` = round(mean(gpa,na.rm =TRUE),3),
+            `SD of GPA` = round(sd(gpa,na.rm =TRUE),3))  %>% 
+  kable() %>%
+  kable_styling(position = 'center') %>%
+  row_spec(0,bold = TRUE)
+```
+
+
+## Visualize 
+
+```{r message=FALSE, warning=FALSE}
+mod_sports_df %>% 
+  ggplot(aes(x = sport, y = gpa, fill = sport)) +
+  geom_boxplot() +
+  theme_bw() + 
+  scale_fill_manual(values=c("#999999", "#E69F00", "#56B4E9",'#7CC439')) +
+  stat_summary(fun="mean", color="red", shape=10, size = 0.9) +
+  labs(x = 'Sports', 
+       y = 'GPA', 
+       title = 'GPA across Sports') +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = 'bold'),
+        axis.title = element_text(size = 10, color = 'black'), legend.position = 'NONE') 
+```
+**Comments:**
+
+- The red symbols indicate the mean and they are look very similar to one another
+- The variability looks very similar across the groups
+
+
+
+## Analyze
+
+```{r}
+model <- aov(gpa ~ sport, data = mod_sports_df)
+tidy(model) %>% 
+  kable() %>% 
+  kable_styling()
+```
+
+**Comments:**
+
+- p-value indicates the **likelihood** of observing these differences between the sample means given the null hypothesis is true
+
+- Since the p-value large, it is likely for us to see these differences given the population means of GPA across sports are the same
+
+- This tells us that there is no evidence for us to reject the null hypothesis
+
+
+Remember in the last post that there was evidence to reject the null hypothesis because the p-value was small. (We will come to this conclusion again in a moment.)
+
+The random assignment that we did in this post could have been a fluke! It would be best if we randomly assigned students to a sport more (10000) times to determine how likely our result was from the previous post.
+
+```{r}
+##-----------------------------
+## Name: generateTestStatistic
+## Purpose: randomly assign treatment and perform ANOVA
+## Input: NA
+## Output: Test Statistic
+##-----------------------------
+generateTestStatistic = function(){
+  ## Randomly assign sports to students
+  mod_sports_df = transform( sports_df, sport = sample(sport) )
+    ## Run Model
+  model <- aov(gpa ~ sport, data = mod_sports_df)
+  
+  ## Summarize Data
+  results <- tidy(model) 
+  
+  ## Get the test statistic
+  tmp_statistic = select(results,statistic)[1,]
+  
+  return(tmp_statistic)
+}
+
+
+
+statistic_df = replicate(n = 1000, generateTestStatistic()) %>% 
+  unlist() %>% 
+  data.frame() %>% 
+  rename(testStatistics = '.' )
+
+
+statistic_df %>%
+  ggplot(aes(x = testStatistics)) +
+  geom_histogram(bins = 45) +
+  geom_vline(xintercept = 5.26,size = 1.2) +
+  theme_bw()
+
+  
+```
+
 
 
 
