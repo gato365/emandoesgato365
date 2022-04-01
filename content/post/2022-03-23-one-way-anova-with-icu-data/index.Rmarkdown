@@ -119,7 +119,7 @@ tidy(a) %>%
 
 - p-value indicates the **likelihood** of observing these differences between the sample means given the null hypothesis is true
 
-- Since the p-value is small (*= 0*), it is very unlikely for us to see these differences given the population means of systolic blood pressure across age groups are the same
+- Since the p-value is small (*= 0*), it is very unlikely for us to see these differences given the population means of GPA across sports are the same
 
 
 ## Next Post will be...
