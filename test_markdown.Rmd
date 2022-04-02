@@ -1,0 +1,19 @@
+---
+title: "firstProject"
+author: "Immanuel"
+date: '2022-04-02'
+output: html_document
+---
+
+```{r}
+library(tidyverse)
+```
+
+```{r}
+mtcars %>% 
+  ggplot(aes(x = wt, y = mpg)) +
+  geom_point() +
+  theme_bw()
+```
+
+
