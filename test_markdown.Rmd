@@ -11,8 +11,8 @@ library(tidyverse)
 
 ```{r}
 mtcars %>% 
-  ggplot(aes(x = wt, y = mpg)) +
-  geom_point() +
+  ggplot(aes(x = mpg)) +
+  geom_histogram() +
   theme_bw()
 ```
 
