@@ -78,26 +78,26 @@ sports_df %>%
   <tr>
    <td style="text-align:left;"> baseball </td>
    <td style="text-align:right;"> 12 </td>
-   <td style="text-align:right;"> 3.107 </td>
-   <td style="text-align:right;"> 0.042 </td>
+   <td style="text-align:right;"> 2.973 </td>
+   <td style="text-align:right;"> 0.130 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> basketball </td>
    <td style="text-align:right;"> 10 </td>
-   <td style="text-align:right;"> 2.603 </td>
-   <td style="text-align:right;"> 0.062 </td>
+   <td style="text-align:right;"> 2.858 </td>
+   <td style="text-align:right;"> 0.163 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> football </td>
    <td style="text-align:right;"> 15 </td>
-   <td style="text-align:right;"> 2.896 </td>
-   <td style="text-align:right;"> 0.059 </td>
+   <td style="text-align:right;"> 2.890 </td>
+   <td style="text-align:right;"> 0.135 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> soccer </td>
-   <td style="text-align:right;"> 11 </td>
-   <td style="text-align:right;"> 3.327 </td>
-   <td style="text-align:right;"> 0.046 </td>
+   <td style="text-align:right;"> 14 </td>
+   <td style="text-align:right;"> 3.072 </td>
+   <td style="text-align:right;"> 0.169 </td>
   </tr>
 </tbody>
 </table>
@@ -166,16 +166,16 @@ tidy(a) %>%
   <tr>
    <td style="text-align:left;"> sport </td>
    <td style="text-align:right;"> 3 </td>
-   <td style="text-align:right;"> 3.0462348 </td>
-   <td style="text-align:right;"> 1.0154116 </td>
-   <td style="text-align:right;"> 362.179 </td>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0.3538122 </td>
+   <td style="text-align:right;"> 0.1179374 </td>
+   <td style="text-align:right;"> 5.264004 </td>
+   <td style="text-align:right;"> 0.0032583 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Residuals </td>
-   <td style="text-align:right;"> 44 </td>
-   <td style="text-align:right;"> 0.1233592 </td>
-   <td style="text-align:right;"> 0.0028036 </td>
+   <td style="text-align:right;"> 47 </td>
+   <td style="text-align:right;"> 1.0530118 </td>
+   <td style="text-align:right;"> 0.0224045 </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
   </tr>
@@ -187,7 +187,7 @@ tidy(a) %>%
 
 - p-value indicates the **likelihood** of observing these differences between the sample means given the null hypothesis is true
 
-- Since the p-value is small (*= 0*), it is very unlikely for us to see these differences given the population means of systolic blood pressure across age groups are the same
+- Since the p-value is small (*= 0*), it is very unlikely for us to see these differences given the population means of GPA across sports are the same
 
 
 ## Next Post will be...
