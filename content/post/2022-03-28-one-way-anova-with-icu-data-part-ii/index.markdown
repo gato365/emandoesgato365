@@ -114,7 +114,7 @@ head(mod_sports_df,4) %>%
   <tr>
    <td style="text-align:right;font-weight: bold;color: red !important;"> 2.877 </td>
    <td style="text-align:left;font-weight: bold;color: red !important;"> bus </td>
-   <td style="text-align:left;"> soccer </td>
+   <td style="text-align:left;"> baseball </td>
   </tr>
   <tr>
    <td style="text-align:right;font-weight: bold;color: red !important;"> 2.822 </td>
@@ -129,7 +129,7 @@ head(mod_sports_df,4) %>%
   <tr>
    <td style="text-align:right;font-weight: bold;color: red !important;"> 2.984 </td>
    <td style="text-align:left;font-weight: bold;color: red !important;"> bus </td>
-   <td style="text-align:left;"> football </td>
+   <td style="text-align:left;"> soccer </td>
   </tr>
 </tbody>
 </table>
@@ -139,24 +139,7 @@ head(mod_sports_df,4) %>%
 As you can see the first two columns within both data frames are the same while the sport in the randomly assign data frame is different from the original.
 
 
-## Visualize 
-
-
-```r
-mod_sports_df %>% 
-  ggplot(aes(x = sport, y = gpa, fill = sport)) +
-  geom_boxplot() +
-  theme_bw() + 
-  scale_fill_manual(values=c("#999999", "#E69F00", "#56B4E9",'#7CC439')) +
-  stat_summary(fun="mean", color="red", shape=10, size = 0.9) +
-  labs(x = 'Sports', 
-       y = 'GPA', 
-       title = 'GPA across Sports') +
-  theme(plot.title = element_text(hjust = 0.5, size = 15, face = 'bold'),
-        axis.title = element_text(size = 10, color = 'black'), legend.position = 'NONE') 
-```
-
-<img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-5-1.png" width="672" />
+## Visualize and Summarize
 
 
 
