@@ -18,9 +18,7 @@ projects: []
 ---
 
 
-```{r message=FALSE, warning=FALSE, include=FALSE}
-library(tidyverse)
-```
+
 
 # Instructions:
 Read through this exercise and be sure to commit and push every time I ask you to. You should read the text and copy the text that I write in this post into your R markdown file (do your best to use your own words), making sure you understand what I am doing. This is critical in terms of understanding the analysis. When using your data, consider my suggestion or use the variables that make sense to you.
@@ -74,7 +72,8 @@ Sid: Consider Position and Points
 
 **Side Note: since cylinder is numeric, R is going to treat it as if it is a number so I am going to let R know it is categorical by using the factor function.**
 
-```{r}
+
+```r
 mod_mtcars = mtcars %>% 
   mutate(cyl = as.factor(cyl))
 ```
@@ -85,7 +84,8 @@ Visualization of data is always a great place to start to get a general understa
 
 ### Provide box plot with mean
 
-```{r}
+
+```r
 mod_mtcars %>%  
   ggplot(aes(x = cyl, y = mpg)) +
   geom_boxplot() +
@@ -93,6 +93,8 @@ mod_mtcars %>%
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5, face = 'bold', size = 15))
 ```
+
+<img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-3-1.png" width="672" />
 
 
 i.	Benefits 
