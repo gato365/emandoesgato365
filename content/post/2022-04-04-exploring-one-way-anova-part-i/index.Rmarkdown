@@ -1,0 +1,39 @@
+---
+title: Exploring One-Way ANOVA (Part I)
+author: ''
+date: '2022-04-04'
+slug: exploring-one-way-anova-part-i
+categories: [one way anova, statistics, concepts, R, sports]
+tags: []
+subtitle: 'A guide for my high school students.'
+summary: 'Using data to understand statistical techniques.'
+authors: []
+lastmod: '2022-04-04T12:10:12Z'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+## Instructions:
+Read through this exercise and be sure to commit and push every time I ask you to. You should copy the text that I write in this post into your R markdown file, making sure you understand what I am doing. This is critical in terms of understanding the analysis. When using your data, consider my suggestion or use the variables that make sense to you.
+
+### 1. The purpose of One-Way ANOVA 
+One-Way ANOVA is used to determine whether the population means are the same across 3 more groups. In other words, you would like to determine if the population means are equal to the same value. 
+
+Examples: A farmer has 
+
+#### Hypothesis Testing
+H
+a.	The null hypothesis is that the population means are equal 
+b.	The alternative hypothesis is that at least one of the population means is different from the others
+c.	The data that we will investigate does not naturally follow the general premise of statistical theory, but we will still use this as material if the population does not exist
+2.	Visualization
+a.	Provide boxplots with mean
+i.	Benefits 
+ii.	Interpretations
+b.	Provide Violin with mean
+i.	Benefits 
+ii.	Interpretations
