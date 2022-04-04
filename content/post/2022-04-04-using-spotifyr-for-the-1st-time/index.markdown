@@ -16,6 +16,10 @@ image:
   preview_only: no
 projects: []
 ---
+<script src="{{< blogdown/postref >}}index_files/kePrint/kePrint.js"></script>
+<link href="{{< blogdown/postref >}}index_files/lightable/lightable.css" rel="stylesheet" />
+<script src="{{< blogdown/postref >}}index_files/kePrint/kePrint.js"></script>
+<link href="{{< blogdown/postref >}}index_files/lightable/lightable.css" rel="stylesheet" />
 
 
 
@@ -26,14 +30,16 @@ projects: []
 
 **Step 2:** Install spotifyr by running the following code:
 
-```{r eval=FALSE}
+
+```r
 install.packages('spotifyr')
 ```
 
 
 **Step 3:** You will have to run this with your ID and SECRET
 
-```{r message=FALSE, warning=FALSE}
+
+```r
 library(tidyverse)
 library(spotifyr)
 library(lubridate)
@@ -57,12 +63,11 @@ My next 3 posts of will be using these functions from *spotifyr* so that you all
 ### 1. Explore an artist
 I love Old Kanye West and I try to understand New "Ye". So lets look at (analyze) his songs using the **get_artist_audio_features()** function.
 
-```{r echo=FALSE}
-# kanye_west_df = readRDS('content/post/2022-04-04-using-spotifyr-for-the-1st-time/kanyewest.RData')
-```
 
 
-```{r}
+
+
+```r
 kanye_west_df <- get_artist_audio_features('kanye west') 
 ```
 It takes a while because he has a lot of songs!
@@ -102,7 +107,8 @@ There are some songs that are duplicated and there are many reasons why this can
 
 - two versions of a song can occur because one version is clean and the other is explicit
 
-```{r}
+
+```r
 kanye_west_df %>% 
   filter(track_name == 'Jesus Walks') %>% 
   select(track_name,explicit) %>% 
@@ -110,16 +116,48 @@ kanye_west_df %>%
   kable_styling(position = 'center')
 ```
 
+<table class="table" style="margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;"> track_name </th>
+   <th style="text-align:left;"> explicit </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Jesus Walks </td>
+   <td style="text-align:left;"> TRUE </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Jesus Walks </td>
+   <td style="text-align:left;"> FALSE </td>
+  </tr>
+</tbody>
+</table>
+
 - different versions of the same song because some countries wont allow certain versions of a song 
-```{r}
+
+```r
 kanye_west_df %>% 
   filter(track_name == 'Addiction') %>% 
   select(track_name,explicit,available_markets)
 ```
 
+```
+##   track_name explicit
+## 1  Addiction     TRUE
+## 2  Addiction    FALSE
+## 3  Addiction     TRUE
+##                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            available_markets
+## 1     AD, AE, AG, AL, AM, AO, AR, AT, AU, AZ, BA, BB, BD, BE, BF, BG, BH, BI, BJ, BN, BO, BR, BS, BT, BW, BY, BZ, CA, CD, CG, CH, CI, CL, CM, CO, CR, CV, CW, CY, CZ, DE, DJ, DK, DM, DO, DZ, EC, EE, EG, ES, FI, FJ, FM, FR, GA, GD, GE, GH, GM, GN, GQ, GR, GT, GW, GY, HK, HN, HR, HT, HU, ID, IL, IN, IQ, IS, IT, JM, JO, JP, KE, KG, KH, KI, KM, KN, KR, KW, KZ, LA, LB, LC, LI, LK, LR, LS, LT, LU, LV, LY, MA, MC, MD, ME, MG, MH, MK, ML, MN, MO, MR, MT, MU, MV, MW, MX, MY, MZ, NA, NE, NG, NI, NL, NO, NP, NR, NZ, OM, PA, PE, PG, PH, PK, PL, PS, PT, PW, PY, QA, RO, RS, RU, RW, SA, SB, SC, SE, SG, SI, SK, SL, SM, SN, SR, ST, SV, SZ, TD, TG, TH, TJ, TL, TN, TO, TR, TT, TV, TW, TZ, UA, UG, US, UY, UZ, VC, VE, VN, VU, WS, XK, ZA, ZM, ZW
+## 2 AD, AE, AG, AL, AM, AO, AR, AT, AU, AZ, BA, BB, BD, BE, BF, BG, BH, BI, BJ, BN, BO, BR, BS, BT, BW, BY, BZ, CD, CG, CH, CI, CL, CM, CO, CR, CV, CW, CY, CZ, DE, DJ, DK, DM, DO, DZ, EC, EE, EG, ES, FI, FJ, FM, FR, GA, GB, GD, GE, GH, GM, GN, GQ, GR, GT, GW, GY, HK, HN, HR, HT, HU, ID, IE, IL, IN, IQ, IS, IT, JM, JO, JP, KE, KG, KH, KI, KM, KN, KR, KW, KZ, LA, LB, LC, LI, LK, LR, LS, LT, LU, LV, LY, MA, MC, MD, ME, MG, MH, MK, ML, MN, MO, MR, MT, MU, MV, MW, MX, MY, MZ, NA, NE, NG, NI, NL, NO, NP, NR, NZ, OM, PA, PE, PG, PH, PK, PL, PS, PT, PW, PY, QA, RO, RS, RU, RW, SA, SB, SC, SE, SG, SI, SK, SL, SM, SN, SR, ST, SV, SZ, TD, TG, TH, TJ, TL, TN, TO, TR, TT, TV, TW, TZ, UA, UG, US, UY, UZ, VC, VE, VN, VU, WS, XK, ZA, ZM, ZW
+## 3                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     GB, IE
+```
+
 
 You can just arbitrarily remove variables based on the track name using the *distinct()* function but duplicates can still occur.
-```{r}
+
+```r
 kw_df = kanye_west_df %>% 
   distinct(track_name, .keep_all = TRUE) ## keep_all, keeps all variable
 
@@ -130,12 +168,35 @@ kw_df %>%
   kable_styling(position = 'center')
 ```
 
+<table class="table" style="margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;"> track_name </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> All Of The Lights (Interlude) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> All Of The Lights </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> All Of The Lights (Interlude) - Album Version (Edited) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> All Of The Lights - Album Version (Edited) </td>
+  </tr>
+</tbody>
+</table>
+
 
 
 We are going to explore old Kanye's Top 21 hits from this top 40 list from this  [post](https://www.highsnobiety.com/p/best-kanye-west-songs/). I do not necessarily agree with this list but we will analyze it anyway.
 
 
-```{r}
+
+```r
 top_21_songs = c('All Of The Lights',
                  'Diamonds From Sierra Leone','Ultralight Beam','All Falls Down',
                  'New Slaves','Monster','Black Skinhead',
@@ -148,7 +209,8 @@ top_21_songs = c('All Of The Lights',
 
 ## Time to clean
 
-```{r}
+
+```r
 kw_songs_df = kanye_west_df %>% 
   filter(track_name %in% top_21_songs) 
 ```
@@ -158,7 +220,8 @@ There are still duplicates!!!!!
 
 
 Please notice how I did not use filter, I used distinct because it will extract the first version (row) of a track with the same name. This is problematic if I wanted a specific version of a song, i.e., only explicit song, but this is a simple blog posts. I also scaled valence so that it makes sense in that negative valence values are negative and postive valence values are positive. This variable is called *m1_valence*.
-```{r}
+
+```r
 mod_kw_songs_df = kw_songs_df %>% 
   distinct(track_name, .keep_all= TRUE) %>% 
   mutate(m1_valence = 2*valence - 1)
@@ -166,7 +229,8 @@ mod_kw_songs_df = kw_songs_df %>%
 
 
 We can look at energey and valence of the songs but I label the axes based on the mood
-```{r}
+
+```r
 df = data.frame(x = c(0,1), y = c(0,1))
 p1 = df %>% 
   ggplot(aes(x = x, y = y)) +
@@ -193,14 +257,19 @@ p1 = df %>%
 p1
 ```
 
+<img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-11-1.png" width="672" />
+
 
 
 Lets look at these songs with these moods:
-```{r}
+
+```r
 p1 +
   geom_point(data = mod_kw_songs_df,aes(x = m1_valence  , y = energy),size = 2.1) + 
   theme(legend.position = 'bottom')
 ```
+
+<img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-12-1.png" width="672" />
 
 
 
