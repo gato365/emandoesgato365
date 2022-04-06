@@ -10,6 +10,7 @@ summary: 'Using data to understand statistical techniques.'
 authors: []
 lastmod: '2022-04-06T18:11:46Z'
 featured: no
+katex: true
 image:
   caption: ''
   focal_point: ''
@@ -98,7 +99,7 @@ The point of One-Way ANOVA is to determine if the population means are equal usi
 the information from a sample. A good way to think of One-Way ANOVA is to think of
 the ratio between the standard deviation of the sample means compared to the mean 
 of the standard deviations.
-\\[\frac{\text{Standard Deviation of the Means}}{\text{Mean of the Standard Deviations}}\\]
+\\(\frac{\text{Standard Deviation of the Means}}{\text{Mean of the Standard Deviations}}\\)
 Here is how it is calculated in R:
 ```{r}
 ratio_anova = sd(summary_mtcars_df$mean_mpg) / mean(summary_mtcars_df$sd_mpg)
@@ -111,7 +112,7 @@ ratio_anova
 In a situation when the means are different, the ratio that we just found,`r ratio_anova` would be quite large. Below I give a rationale on why this does not work for this data set.
 
 
-In a proper implementation of One-Way ANOVA we assume that the standard deviation across all groups are equal. A good gauge to see if the standard deviations are approximately equal is the look at the ratio between the max and min standard deviation \\[s_{max}/s_{min}\\]. If this ratio is less than 2 this assumption has been met, if not interesting result will occur.
+In a proper implementation of One-Way ANOVA we assume that the standard deviation across all groups are equal. A good gauge to see if the standard deviations are approximately equal is the look at the ratio between the max and min standard deviation \\(s_{max}/s_{min}\\). If this ratio is less than 2 this assumption has been met, if not interesting result will occur.
 
 ```{r}
 max(summary_mtcars_df$sd_mpg)/min(summary_mtcars_df$sd_mpg)
@@ -120,7 +121,7 @@ max(summary_mtcars_df$sd_mpg)/min(summary_mtcars_df$sd_mpg)
 Since this ratio is so large the following description does not work well for
 this data. If your box plots are extremely different in your post for part 1 
 and/or the means are extremely different from your summarized data (above),
-the standard deviation ratio \\[s_{max}/s_{min}\\] is the issue.
+the standard deviation ratio \\(s_{max}/s_{min}\\) is the issue.
 
 <span style="color: purple;">'Commit Here: state what you just did for your message'</span>
 
