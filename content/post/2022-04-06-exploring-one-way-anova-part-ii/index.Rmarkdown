@@ -17,6 +17,7 @@ image:
 projects: []
 ---
 
+You should  read this post and analyze your data in the same format.
 
 ## Welcome back!!
 In the last post we focused on:
@@ -50,6 +51,19 @@ summary_mtcars_df = mod_mtcars %>%
 
 summary_mtcars_df
 ```
+
 **Coding Notes:**
-What is *na.rm* and why did I use it? This is for values that may be missing in your data set.
+
+What is *na.rm =TRUE* and why did I use it? This is for values that may be missing (NA) in your data set, I do not have missing values, but you may.
+
+
+**Summary Notes**
+
+- The sample size not equal across the number of cylinders
+- It can be seen as the number of cylinders increase the mean of miles per gallon decreases. We cannot talk about causality because we did not implement an experiment.
+- The standard deviation of the 4 cylinder cars is more that 3 times (4.51/1.45) more than 8 cylinder cars
+
+Question: What does mean measure with the sample? the center or variability? Explain.
+
+Question: What does standard deviation measure within the sample? the center or variability? Explain.
 
