@@ -17,7 +17,13 @@ image:
 projects: []
 ---
 
-You should  read this post and analyze your data in the same format.
+# Instructions:
+Read through this exercise and be sure to commit and push every time I ask you to. 
+
+Remember:
+<span style="color: red;"> Also answer questions along the way in your R markdown file. The questions will be in red.</span> 
+
+<span style="color: purple;">'When you see purple text commit and state what you just did for your commit.'</span>
 
 ## Welcome back!!
 In the last post we focused on:
@@ -63,12 +69,29 @@ What is *na.rm =TRUE* and why did I use it? This is for values that may be missi
 - It can be seen as the number of cylinders increase the mean of miles per gallon decreases. We cannot talk about causality because we did not implement an experiment.
 - The standard deviation of the 4 cylinder cars is more that 3 times (4.51/1.45) more than 8 cylinder cars
 
-Question: What does mean measure with the sample? the center or variability? Explain.
+<span style="color: red;">Question 1: What does mean measure with the sample? the center or variability? Explain.</span>
 
-Question: What does standard deviation measure within the sample? the center or variability? Explain.
+<span style="color: red;">Question 2: What does standard deviation measure within the sample? the center or variability? Explain.</span>
 
 
+In a proper implementation of One-Way ANOVA we assume that the standard deviation across all groups are equal. A good gauge to see if the standard deviations are approximately equal is the look at the ratio between the max and min standard deviation $s_{max}/s_{min}$. If this ratio is less than 2 this assumption has been met, if not interesting result will occur.
 
+```{r}
+max(summary_mtcars_df$sd_mpg)/min(summary_mtcars_df$sd_mpg)
+```
+
+Since this ratio is so large the following description does not work well for
+this data. If the box plot are extremely different in your last post or the means are 
+extremely different from your summarize data, the standard deviation ratio is 
+the issue.
+
+
+The point of One-Way ANOVA is to determine if the population means are equal using
+the information from a sample. A good way to think of One-Way ANOVA is to think of
+the ratio between the standard deviation of the sample means compared to the mean 
+of the standard deviations.
+$$\frac{\text{Standard Deviation of the Means}}{\text{Mean of the Standard Deviations}}$$
+Here is how it is calculated in R:
 ```{r}
 sd(summary_mtcars_df$mean_mpg) / mean(summary_mtcars_df$sd_mpg)
 ```
