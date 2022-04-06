@@ -1,0 +1,55 @@
+---
+title: Exploring One-Way ANOVA (Part II)
+author: ''
+date: '2022-04-06'
+slug: exploring-one-way-anova-part-ii
+categories: []
+tags: []
+subtitle: ''
+summary: ''
+authors: []
+lastmod: '2022-04-06T18:11:46Z'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+
+## Welcome back!!
+In the last post we focused on:
+
+**1. The purpose of One-Way ANOVA** is to determine whether the population means are the same across 3 more groups
+
+**2. Visualizations of Data for One-Way ANOVA**
+  
+  - Box Plot
+  - Violin Plot
+
+Today we are going to summarize the data and evaluate a specific statistic to understand hypothesis testing further for One-Way ANOVA.
+
+Before I begin, I must mutate cyl because R will consider to be numeric.
+
+
+```{r}
+mod_mtcars = mtcars %>% 
+  mutate(cyl = as.factor(cyl))
+```
+
+
+### Summaization of the Data
+
+```{r}
+summary_mtcars_df = mod_mtcars %>% 
+  group_by(cyl) %>% 
+  summarise(sample_size = n(),
+            mean_mpg = mean(mpg,na.rm = TRUE),
+            sd_mpg = sd(mpg,na.rm = TRUE))
+
+summary_mtcars_df
+```
+**Coding Notes:**
+What is *na.rm* and why did I use it? This is for values that may be missing in your data set.
+
