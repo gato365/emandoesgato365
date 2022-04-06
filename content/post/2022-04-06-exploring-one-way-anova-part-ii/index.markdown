@@ -17,9 +17,7 @@ image:
 projects: []
 ---
 
-```{r message=FALSE, warning=FALSE, include=FALSE}
-library(tidyverse)
-```
+
 
 
 # Instructions:
@@ -49,7 +47,8 @@ Today we are going to summarize the data and evaluate a specific statistic to un
 Before I begin, I must mutate cyl because R will consider to be numeric.
 
 
-```{r}
+
+```r
 mod_mtcars = mtcars %>% 
   mutate(cyl = as.factor(cyl))
 ```
@@ -57,7 +56,8 @@ mod_mtcars = mtcars %>%
 
 ### Summaization of the Data
 
-```{r}
+
+```r
 summary_mtcars_df = mod_mtcars %>% 
   group_by(cyl) %>% 
   summarise(sample_size = n(),
@@ -65,6 +65,15 @@ summary_mtcars_df = mod_mtcars %>%
             sd_mpg = sd(mpg,na.rm = TRUE))
 
 summary_mtcars_df
+```
+
+```
+## # A tibble: 3 × 4
+##   cyl   sample_size mean_mpg sd_mpg
+##   <fct>       <int>    <dbl>  <dbl>
+## 1 4              11     26.7   4.51
+## 2 6               7     19.7   1.45
+## 3 8              14     15.1   2.56
 ```
 
 <span style="color: purple;">'Commit Here: state what you just did for your message'</span>
@@ -98,29 +107,39 @@ The point of One-Way ANOVA is to determine if the population means are equal usi
 the information from a sample. A good way to think of One-Way ANOVA is to think of
 the ratio between the standard deviation of the sample means compared to the mean 
 of the standard deviations.
-$$\frac{\text{Standard Deviation of the Means}}{\text{Mean of the Standard Deviations}}$$
+`$$\frac{\text{Standard Deviation of the Means}}{\text{Mean of the Standard Deviations}}$$`
 Here is how it is calculated in R:
-```{r}
+
+```r
 ratio_anova = sd(summary_mtcars_df$mean_mpg) / mean(summary_mtcars_df$sd_mpg)
 ratio_anova
+```
+
+```
+## [1] 2.048148
 ```
 
 <span style="color: purple;">'Commit Here: state what you just did for your message'</span>
 
 
-In a situation when the means are different, the ratio that we just found,`r ratio_anova` would be quite large. Below I give a rationale on why this does not work for this data set.
+In a situation when the means are different, the ratio that we just found,2.0481485 would be quite large. Below I give a rationale on why this does not work for this data set.
 
 
-In a proper implementation of One-Way ANOVA we assume that the standard deviation across all groups are equal. A good gauge to see if the standard deviations are approximately equal is the look at the ratio between the max and min standard deviation $s_{max}/s_{min}$. If this ratio is less than 2 this assumption has been met, if not interesting result will occur.
+In a proper implementation of One-Way ANOVA we assume that the standard deviation across all groups are equal. A good gauge to see if the standard deviations are approximately equal is the look at the ratio between the max and min standard deviation `\(s_{max}/s_{min}\)`. If this ratio is less than 2 this assumption has been met, if not interesting result will occur.
 
-```{r}
+
+```r
 max(summary_mtcars_df$sd_mpg)/min(summary_mtcars_df$sd_mpg)
+```
+
+```
+## [1] 3.102593
 ```
 
 Since this ratio is so large the following description does not work well for
 this data. If your box plots are extremely different in your post for part 1 
 and/or the means are extremely different from your summarized data (above),
-the standard deviation ratio $s_{max}/s_{min}$ is the issue.
+the standard deviation ratio `\(s_{max}/s_{min}\)` is the issue.
 
 <span style="color: purple;">'Commit Here: state what you just did for your message'</span>
 
