@@ -107,7 +107,7 @@ The point of One-Way ANOVA is to determine if the population means are equal usi
 the information from a sample. A good way to think of One-Way ANOVA is to think of
 the ratio between the standard deviation of the sample means compared to the mean 
 of the standard deviations.
-`$$\frac{\text{Standard Deviation of the Means}}{\text{Mean of the Standard Deviations}}$$`
+\\[\frac{\text{Standard Deviation of the Means}}{\text{Mean of the Standard Deviations}}\\]
 Here is how it is calculated in R:
 
 ```r
@@ -125,7 +125,7 @@ ratio_anova
 In a situation when the means are different, the ratio that we just found,2.0481485 would be quite large. Below I give a rationale on why this does not work for this data set.
 
 
-In a proper implementation of One-Way ANOVA we assume that the standard deviation across all groups are equal. A good gauge to see if the standard deviations are approximately equal is the look at the ratio between the max and min standard deviation `\(s_{max}/s_{min}\)`. If this ratio is less than 2 this assumption has been met, if not interesting result will occur.
+In a proper implementation of One-Way ANOVA we assume that the standard deviation across all groups are equal. A good gauge to see if the standard deviations are approximately equal is the look at the ratio between the max and min standard deviation \\[s_{max}/s_{min}\\]. If this ratio is less than 2 this assumption has been met, if not interesting result will occur.
 
 
 ```r
@@ -139,7 +139,7 @@ max(summary_mtcars_df$sd_mpg)/min(summary_mtcars_df$sd_mpg)
 Since this ratio is so large the following description does not work well for
 this data. If your box plots are extremely different in your post for part 1 
 and/or the means are extremely different from your summarized data (above),
-the standard deviation ratio `\(s_{max}/s_{min}\)` is the issue.
+the standard deviation ratio \\[s_{max}/s_{min}\\] is the issue.
 
 <span style="color: purple;">'Commit Here: state what you just did for your message'</span>
 
