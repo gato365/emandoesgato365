@@ -67,3 +67,10 @@ Question: What does mean measure with the sample? the center or variability? Exp
 
 Question: What does standard deviation measure within the sample? the center or variability? Explain.
 
+
+
+```{r}
+sd(summary_mtcars_df$mean_mpg) / mean(summary_mtcars_df$sd_mpg)
+```
+
+
