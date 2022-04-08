@@ -3,7 +3,7 @@ title: Exploring One-Way ANOVA (Part III)
 author: ''
 date: '2022-04-08'
 slug: exploring-one-way-anova-part-iii
-categories: [one way anova, statistics, concepts, R, sports, gato365, datascience]
+categories: [one way anova, statistics, concepts, R, sports]
 tags: []
 subtitle: 'Calculations of One-Way ANOVA'
 summary: 'Calculations and being able to explain why!'
@@ -24,12 +24,10 @@ we will discuss the equations in class tomorrow after the website.
 
 <span style="color: purple;">'When you see purple text commit and state what you just did for your commit.'</span>
 
-```{r message=FALSE, warning=FALSE, include=FALSE}
-library(tidyverse)
-library(tidymodels)
-```
 
-```{r}
+
+
+```r
 mod_mtcars = mtcars %>% 
   mutate(cyl = as.factor(cyl))
 ```
@@ -37,9 +35,18 @@ mod_mtcars = mtcars %>%
 
 
 ### Implementation of the One-Way ANOVA Model
-```{r}
+
+```r
 model1 <- aov(mpg ~ cyl, mod_mtcars)
 tidy(model1)
+```
+
+```
+## # A tibble: 2 × 6
+##   term         df sumsq meansq statistic  p.value
+##   <chr>     <dbl> <dbl>  <dbl>     <dbl>    <dbl>
+## 1 cyl           2  825.  412.       39.7  4.98e-9
+## 2 Residuals    29  301.   10.4      NA   NA
 ```
 
 ## We are going to explain each number
@@ -53,7 +60,8 @@ In this problems K = 3 (types of cylinder) & n = 32 (cars)
 
 
 
-```{r}
+
+```r
 K = 3
 n = 32
 ```
@@ -71,7 +79,8 @@ degrees of freedom of Residuals term is n - K = 29
 
 
 
-```{r}
+
+```r
 df_groups = K - 1 
 df_residuals = n - K
 ```
@@ -81,7 +90,8 @@ df_residuals = n - K
 
 
 ### Sums of Square cyl
-```{r}
+
+```r
 overall_mean = mean(mod_mtcars$mpg, na.rm = TRUE)
 
 SS_groups_df = mod_mtcars %>% 
@@ -92,7 +102,10 @@ SS_groups_df = mod_mtcars %>%
   mutate(sam_mean_diffsq = (group_sample_size)* mean_diffsq )
   
 (SS_groups = sum(SS_groups_df$sam_mean_diffsq))
+```
 
+```
+## [1] 824.7846
 ```
 
 <span style="color: purple;">'Commit Here: calculate sums of square of groups'</span>
@@ -101,13 +114,18 @@ SS_groups_df = mod_mtcars %>%
 
 ### Sums of Square Residuals
 
-```{r}
+
+```r
 SS_residuals_df = mod_mtcars %>% 
   group_by(cyl) %>% 
   summarise(sd_group = sd(mpg, na.rm = TRUE), group_sample_size = n()) %>% 
   mutate(sp2 =  (group_sample_size - 1)*(sd_group^2))
 
 (SS_residuals = sum(SS_residuals_df$sp2))
+```
+
+```
+## [1] 301.2626
 ```
 
 <span style="color: purple;">'Commit Here: calculate the sums of squares of residuals'</span>
@@ -117,8 +135,13 @@ SS_residuals_df = mod_mtcars %>%
 ### Mean Square
 
 #### Groups
-```{r}
+
+```r
 (MS_groups = SS_groups/df_groups)
+```
+
+```
+## [1] 412.3923
 ```
 
 <span style="color: purple;">'Commit Here: calculate the mean square of groups'</span>
@@ -126,8 +149,13 @@ SS_residuals_df = mod_mtcars %>%
 
 
 #### Residuals
-```{r}
+
+```r
 (MS_residual = SS_residuals/df_residuals)
+```
+
+```
+## [1] 10.38837
 ```
 
 
@@ -135,8 +163,13 @@ SS_residuals_df = mod_mtcars %>%
 
 
 ### Test Statistic
-```{r}
+
+```r
 (TS = MS_groups / MS_residual)
+```
+
+```
+## [1] 39.69752
 ```
 
 
@@ -145,8 +178,13 @@ SS_residuals_df = mod_mtcars %>%
 
 
 ### p-value
-```{r}
+
+```r
 1 -  pf(TS, df_groups,df_residuals)
+```
+
+```
+## [1] 4.978919e-09
 ```
 
 

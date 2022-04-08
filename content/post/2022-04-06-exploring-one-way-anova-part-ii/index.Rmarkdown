@@ -3,7 +3,7 @@ title: Exploring One-Way ANOVA (Part II)
 author: ''
 date: '2022-04-06'
 slug: exploring-one-way-anova-part-ii
-categories: [one way anova, statistics, concepts, R, sports]
+categories: [one way anova, statistics, concepts, R, sports, gato365, datascience]
 tags: []
 subtitle: 'A further guide for my high school students.'
 summary: 'Using data to understand statistical techniques.'
