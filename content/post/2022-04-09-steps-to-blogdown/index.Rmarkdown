@@ -126,7 +126,7 @@ Two boxes come up click save twice
 
 Make sure you do all the tasks on the to-do lists
 
-One of the tasks includes making sure the most up to dat verision of blog down has is used
+One of the tasks includes making sure the most up to date version of blog down has is used
 
 options(blogdown.hugo.version = "0.93.3")
 
@@ -147,8 +147,12 @@ options(blogdown.hugo.version = "0.93.3")
   a. Click Site Settings
   
   b. Click Change Site name (use the same name as GitHub)
+  
+  c. Copy and paste this link into your broswer 
 
+# Your Website is done!!
 
+You should now 
 
 ## **Part 5:**
 
