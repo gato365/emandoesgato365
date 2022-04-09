@@ -3,10 +3,10 @@ title: Steps to blogdown
 author: ''
 date: '2022-04-09'
 slug: steps-to-blogdown
-categories: []
+categories: [blogdown, R, github, data science, statistics]
 tags: []
-subtitle: ''
-summary: ''
+subtitle: 'A quick guide to blogdown'
+summary: 'Steps to create blogs within R'
 authors: []
 lastmod: '2022-04-09T14:02:53Z'
 featured: no
@@ -180,7 +180,7 @@ Click *config* folder  &rarr; click on *_default* folder &rarr; click on *config
 *Step 2.2:* Click on the *content* folder  &rarr; click on the *authors* folder &rarr; 
 click on the *admin* folder &rarr; click on the *_index* file
 
-Provide Relevant Information
+*Step 2.3:* Provide Relevant Information
 
 **Step 3:** Remove unnecessary Aspects
 
@@ -193,22 +193,40 @@ Provide Relevant Information
 *Step 1.4:* Add 'active: false' to the YAML
 This  removes the tab of post from your home
 
+We will end here and more details next week!
 
-## **Part 6:** 
-**Step 1:**
-**Step 2:**
-**Step 3:**
-**Step 4:**
-**Step 5:**
-**Step 6:**
-**Step 7:**
-**Step 8:**
-## **Part 7:** 
-**Step 1:**
-**Step 2:**
-**Step 3:**
-**Step 4:**
-**Step 5:**
-**Step 6:**
-**Step 7:**
-**Step 8:**
+- Removing tabs
+- Creating Posts
+- Add images
+
+
+## Resources for blogdown
+
+- This is where I learned how to do this [Inspiration](https://shilaan.rbind.io/post/building-your-website-using-r-blogdown/)
+- Change theme of [blogdown](https://restlessdata.com.au/p/updating-a-blog-theme/)
+
+## Resources for GitHub
+
+- [Resource 1](https://happygitwithr.com/github-acct.html)
+- [Resource 2](https://the-turing-way.netlify.app/collaboration/github-novice.html)
+- [Resource 3](https://www.startyourlab.com/docs/github-accounts/)
+ 
+
+<!-- ## **Part 6:**  -->
+<!-- **Step 1:** -->
+<!-- **Step 2:** -->
+<!-- **Step 3:** -->
+<!-- **Step 4:** -->
+<!-- **Step 5:** -->
+<!-- **Step 6:** -->
+<!-- **Step 7:** -->
+<!-- **Step 8:** -->
+<!-- ## **Part 7:**  -->
+<!-- **Step 1:** -->
+<!-- **Step 2:** -->
+<!-- **Step 3:** -->
+<!-- **Step 4:** -->
+<!-- **Step 5:** -->
+<!-- **Step 6:** -->
+<!-- **Step 7:** -->
+<!-- **Step 8:** -->
