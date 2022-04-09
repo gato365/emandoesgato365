@@ -1,0 +1,84 @@
+---
+title: Steps to blogdown
+author: ''
+date: '2022-04-09'
+slug: steps-to-blogdown
+categories: []
+tags: []
+subtitle: ''
+summary: ''
+authors: []
+lastmod: '2022-04-09T14:02:53Z'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+
+Important Terminology - what is:
+
+- hugo? - static site generator
+- blogdwn? - website platform (i.e., Wordpress)
+- Netlify? - web development platform
+- GitHub? - version control & Sharing
+  - Commit - Snap shot
+  - Push - Save snap shot onto GitHub
+- A YAML-  Header of files
+
+Before we begin, let's get inspired:
+  
+  - [Kelly Bodwin](https://www.kelly-bodwin.com/) & [Github](https://github.com/kbodwin/kbodwin-apero)
+  - [Andrew Heiss](https://datavizf17.classes.andrewheiss.com/) & [GitHub](https://github.com/andrewheiss/datavizs21.classes.andrewheiss.com)
+
+## **Part 1:** Create a new repository via GitHub
+
+**Step 1:** Create a new Repository (Click the Green Button)
+ 
+Name it ‘theNameOfYourWebsite’ 
+
+✓ Keep the repository Public -  who can see your repository  
+
+✓ Add a README file - a location to place what is the purpose of the repo and how to use code
+
+✓ Add .gitignore  - is a system used to not add certain files to the repo, there are different systems that exists
+
+✓ Choose a license - a license tells others what they can and can't do with 
+your source code, there are different types of licenses so that users can do specific things with the code based on the selected license
+
+
+
+
+**Step 2:** Click Create Repository (Using R Studio Cloud)
+
+When done, make sure HTTPS is selected, press the copy button, below is an example
+
+https://github.com/gato365/theNameOfYourWebsite.git
+
+
+
+**Step 3:** Go to R Studio Cloud
+
+**Step 4:** Click on the New Project then within R Studio Cloud 
+
+**Step 5:** Click on New Project from Git Repository 
+
+**Step 6:** Paste https://github.com/gato365/theNameOfYourWebsite.git where it says "URL for your Git Repository" Click OK
+
+
+
+
+
+## **Part 2:** Create website with {blogdown} 
+
+  - install.packages("blogdown") # install the blogdown package 
+  - install.packages("rstudioapi") # to be able to navigate files
+  - library(blogdown) # load blogdown 
+  - new_site(theme = "wowchemy/starter-academic") # create your website! 
+
+*Part of the process:* 1-2 pop screens will show up, just hit 'Save' hit no to preview website
+
+
+## **Part 3:** Sign up with Netlify using your GitHub account
