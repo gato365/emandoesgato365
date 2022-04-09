@@ -43,7 +43,7 @@ Name it ‘theNameOfYourWebsite’
 
 ✓ Add a README file - a location to place what is the purpose of the repo and how to use code
 
-✓ Add .gitignore  - is a system used to not add certain files to the repo, there are different systems that exists
+✓ Add .gitignore  - is a system used to not add certain files to the repo, there are different systems that exists <span style="color: red;">[do not click gitignore this time]</span>
 
 ✓ Choose a license - a license tells others what they can and can't do with 
 your source code, there are different types of licenses so that users can do specific things with the code based on the selected license
@@ -73,12 +73,50 @@ https://github.com/gato365/theNameOfYourWebsite.git
 
 ## **Part 2:** Create website with {blogdown} 
 
-  - install.packages("blogdown") # install the blogdown package 
-  - install.packages("rstudioapi") # to be able to navigate files
-  - library(blogdown) # load blogdown 
-  - new_site(theme = "wowchemy/starter-academic") # create your website! 
+**Step 1:** install.packages("blogdown")                  # install the blogdown package 
+
+
+**Step 2:** install.packages("rstudioapi")                # to be able to navigate files
+
+
+**Step 3:** library(blogdown)                             # load blogdown 
+
+
+**Step 4:** new_site(theme = "wowchemy/starter-academic") # create your website! 
 
 *Part of the process:* 1-2 pop screens will show up, just hit 'Save' hit no to preview website
 
 
+
+## **Part 3:** Changing Git Ignore File
+
+
+**Step 1:** Open gitignore file
+Run the following code in the console: file.edit("gitignore") 
+**Step 2:** Paste specific commands in gitignore file
+
+.Rproj
+.user 
+.Rhistory 
+.RData 
+.Ruserdata 
+.DS_Store
+
+**Step 3:**
+**Step 4:**
+
+
+## **Part 4:**
+
+**Step 1:**
+**Step 2:**
+**Step 3:**
+**Step 4:**
+
+## **Part 5:**
+
+**Step 1:**
+**Step 2:**
+**Step 3:**
+**Step 4:**
 ## **Part 3:** Sign up with Netlify using your GitHub account
