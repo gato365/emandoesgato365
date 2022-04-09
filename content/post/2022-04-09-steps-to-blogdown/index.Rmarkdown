@@ -6,7 +6,7 @@ slug: steps-to-blogdown
 categories: [blogdown, R, github, data science, statistics]
 tags: []
 subtitle: 'A quick guide to blogdown'
-summary: 'Steps to create blogs within R'
+summary: 'Steps to create a blog within R'
 authors: []
 lastmod: '2022-04-09T14:02:53Z'
 featured: no
@@ -193,12 +193,18 @@ click on the *admin* folder &rarr; click on the *_index* file
 *Step 1.4:* Add 'active: false' to the YAML
 This  removes the tab of post from your home
 
-We will end here and more details next week!
+### We will end here and more details next week!
 
 - Removing tabs
 - Creating Posts
 - Add images
 
+
+### In Future Posts:
+
+- Change Favicon
+- Add R Shinys
+- Change Themes
 
 ## Resources for blogdown
 
