@@ -30,6 +30,7 @@ module:
 ## ADVANCED
 ############################
 
+math: true
 enableGitInfo: false
 summaryLength: 30
 paginate: 10
