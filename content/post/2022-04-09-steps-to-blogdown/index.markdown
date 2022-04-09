@@ -93,6 +93,7 @@ https://github.com/gato365/theNameOfYourWebsite.git
 
 **Step 1:** Open gitignore file
 Run the following code in the console: file.edit("gitignore") 
+
 **Step 2:** Paste specific commands in gitignore file
 
 .Rproj
@@ -126,7 +127,7 @@ Two boxes come up click save twice
 
 Make sure you do all the tasks on the to-do lists
 
-One of the tasks includes making sure the most up to dat verision of blog down has is used
+One of the tasks includes making sure the most up to date version of blog down has is used
 
 options(blogdown.hugo.version = "0.93.3")
 
@@ -135,23 +136,65 @@ options(blogdown.hugo.version = "0.93.3")
 ## **Part 4:** Netlify
 
 **Step 1:** Sign up with Netlify using your GitHub account
+
 **Step 2:** Click on Sites
+
 **Step 3:** Click on Add New Sites
+
 **Step 4:** Click on Import an Existing Project
+
 **Step 5:** Click on GitHub and it should link up
+
 **Step 6:** Click on the repository that connects to your repository
+
 **Step 7:** Scroll down on the next page to Deploy Site
+
 **Step 8:** Wait for Deploy bots
+
 **Step 9:** Click Custom Domain
 
   a. Click Site Settings
   
   b. Click Change Site name (use the same name as GitHub)
+  
+  c. Copy and paste this link into your browser 
+
+# Your Website is done!!
+
+You should now see that the blog has a lot of unneeded information
+
+## **Part 5:** Customization of Site
+
+**Step 1:** Change personal website with appropriate link
+
+Click *config* folder  &rarr; click on *_default* folder &rarr; click on *config.yaml* file
+
+*Step 1.1:* Look for the line 'baseurl:' replace the website with your website  
+
+*Step 1.2:* Change 'title:' to the site name you would like
+
+**Step 2:** Provide Personal Information
+
+*Step 2.1:* Click on the Files Panel 
+
+*Step 2.2:* Click on the *content* folder  &rarr; click on the *authors* folder &rarr; 
+click on the *admin* folder &rarr; click on the *_index* file
+
+Provide Relevant Information
+
+**Step 3:** Remove unnecessary Aspects
+
+*Step 1.1:* Click on the Files Panel 
+
+*Step 1.2:* Content  &rarr; home 
+
+*Step 1.3:* Open the file you would like to remove from your website
+
+*Step 1.4:* Add 'active: false' to the YAML
+This  removes the tab of post from your home
 
 
-
-## **Part 5:**
-
+## **Part 6:** 
 **Step 1:**
 **Step 2:**
 **Step 3:**
@@ -160,4 +203,12 @@ options(blogdown.hugo.version = "0.93.3")
 **Step 6:**
 **Step 7:**
 **Step 8:**
-## **Part 3:** 
+## **Part 7:** 
+**Step 1:**
+**Step 2:**
+**Step 3:**
+**Step 4:**
+**Step 5:**
+**Step 6:**
+**Step 7:**
+**Step 8:**

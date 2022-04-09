@@ -93,6 +93,7 @@ https://github.com/gato365/theNameOfYourWebsite.git
 
 **Step 1:** Open gitignore file
 Run the following code in the console: file.edit("gitignore") 
+
 **Step 2:** Paste specific commands in gitignore file
 
 .Rproj
