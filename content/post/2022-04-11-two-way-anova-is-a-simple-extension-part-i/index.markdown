@@ -17,10 +17,7 @@ image:
 projects: []
 ---
 
-```{r message=FALSE, warning=FALSE, include=FALSE}
-library(tidyverse)
-library(ggpubr)
-```
+
 
 
 
@@ -145,7 +142,8 @@ The general idea is to acquire a **sample** from the population and use the evid
 
 
 We will look at how transmission and number of cylinders have an impact on miles per gallon. I make the following adjustments so that we we can analyze the data more efficiently. 
-```{r}
+
+```r
 mod_mtcars = mtcars %>% 
   mutate(cyl = as.factor(cyl),
          am = case_when( 
@@ -168,24 +166,32 @@ within the mtcars data frame are:
 install and run the following package 'ggpubr' to run a two-way anova visualization of the data.
 
 
-```{r}
 
+```r
 ggboxplot(mod_mtcars, x = "cyl", y = "mpg", color = "am",
           palette = c("#00AFBB", "#E7B800")) +
   labs(x = 'Cylinder', y = 'Miles Per Gallon', title = 'Box Plot for One-Way ANOVA with means') +
   theme(plot.title = element_text(hjust = 0.5, face = 'bold', size = 15))
-
 ```
+
+<img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-3-1.png" width="672" />
 #### Interpretation
 
 
 
 
-```{r}
+
+```r
 ggline(mod_mtcars, x = "cyl", y = "mpg", color = "am",
        add = c("mean_se", "dotplot"),
        palette = c("#00AFBB", "#E7B800"))
 ```
+
+```
+## Bin width defaults to 1/30 of the range of the data. Pick better value with `binwidth`.
+```
+
+<img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-4-1.png" width="672" />
 
 
 
