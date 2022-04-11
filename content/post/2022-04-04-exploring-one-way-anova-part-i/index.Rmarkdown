@@ -94,7 +94,7 @@ mod_mtcars = mtcars %>%
 ```
 
 
-## 2.	Visualization
+## 3.	Visualization
 Visualization of data is always a great place to start to get a general understanding of what is going on with the data. We are going to explore two types of plots to gain a better understanding of the data.
 
 <span style="color: purple;">'Commit Here: state what you just did for your message'</span>
