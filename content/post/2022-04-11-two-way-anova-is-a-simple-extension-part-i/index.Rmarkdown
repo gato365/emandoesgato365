@@ -17,10 +17,31 @@ image:
 projects: []
 ---
 
-```{r}
+```{r message=FALSE, warning=FALSE, include=FALSE}
 library(tidyverse)
+library(ggpubr)
 ```
 
+
+
+
+# Instructions:
+Read through this exercise and be sure to commit and push every time I ask you to. You should read the text and copy the text that I write in this post into your R markdown file (do your best to use your own words), making sure you understand what I am doing. This is critical in terms of understanding the analysis. When using your data, consider my suggestion or use the variables that make sense to you.
+
+<span style="color: red;"> Also answer questions along the way in your R markdown file. The questions will be in red.</span> 
+
+<span style="color: purple;">'When you see purple text commit and state what you just did for your commit.'</span>
+
+## 1. The purpose of Two-Way ANOVA 
+The p
+
+
+
+### Hypothesis Testing
+
+
+
+## 2. The data
 
 
 ```{r}
@@ -30,16 +51,6 @@ mod_mtcars = mtcars %>%
            am == 1 ~ 'manual',
            am == 0 ~ 'automatic'))
 ```
-
-# Instructions:
-
-## 1. The purpose of Two-Way ANOVA 
-
-### Hypothesis Testing
-
-
-
-## 2. The data
 
 #### <span style="color: red;">**Nick:**</span>
 
@@ -56,3 +67,28 @@ mod_mtcars = mtcars %>%
 <span style="color: red;">You will use binary_mp and position to explain the variability in points scored.</span> 
 
 ## 3.	Visualization
+
+install and run the following package 'ggpubr' to run a two-way anova visualization of the data.
+
+
+```{r}
+
+ggboxplot(mod_mtcars, x = "cyl", y = "mpg", color = "am",
+          palette = c("#00AFBB", "#E7B800")) +
+  labs(x = 'Cylinder', y = 'Miles Per Gallon', title = 'Box Plot for One-Way ANOVA with means') +
+  theme(plot.title = element_text(hjust = 0.5, face = 'bold', size = 15))
+
+```
+#### Interpretation
+
+
+
+
+```{r}
+ggline(mod_mtcars, x = "cyl", y = "mpg", color = "am",
+       add = c("mean_se", "dotplot"),
+       palette = c("#00AFBB", "#E7B800"))
+```
+
+
+
