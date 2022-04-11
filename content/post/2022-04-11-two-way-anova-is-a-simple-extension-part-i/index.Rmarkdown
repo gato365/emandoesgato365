@@ -5,8 +5,8 @@ date: '2022-04-11'
 slug: two-way-anova-is-a-simple-extension-part-i
 categories: [one way anova, statistics, concepts, R, sports, gato365, datascience, two way anova]
 tags: []
-subtitle: ''
-summary: ''
+subtitle: 'Two-Way ANOVA Introduction'
+summary: 'Going a tad bit deeper'
 authors: []
 lastmod: '2022-04-11T19:16:59Z'
 featured: no
@@ -131,6 +131,8 @@ The general idea is to acquire a **sample** from the population and use the evid
 
 <span style="color: red;">You will use Lg (League) and year to explain the variability in FIPS.</span> 
 
+<span style="color: purple;">'Commit Here: state what you just did for your message'</span>
+
 #### <span style="color: red;">**Sid:**</span>
 
 <span style="color: red;">You should create a new variable named binary_mp where there are two levels:</span>
@@ -141,9 +143,12 @@ The general idea is to acquire a **sample** from the population and use the evid
 
 <span style="color: red;">You will use binary_mp and position to explain the variability in points scored.</span> 
 
-<span style="color: red;">Question 3:  State the null the alternative hypotheses based on these variables.</span>
+<span style="color: purple;">'Commit Here: state what you just did for your message'</span>
 
+<span style="color: red;">Question 3:  State the null the alternative hypotheses
+based on these variables for your data set.</span>
 
+<span style="color: purple;">'Commit Here: state what you just did for your message'</span>
 We will look at how transmission and number of cylinders have an impact on miles per gallon. I make the following adjustments so that we we can analyze the data more efficiently. 
 ```{r}
 mod_mtcars = mtcars %>% 
@@ -156,17 +161,27 @@ mod_mtcars = mtcars %>%
 The null hypothesis for Two-Way ANOVA in terms of the variables of interest 
 within the mtcars data frame are:
 - the null hypothesis would be that the population means of miles per gallon are the
-  same for each type of fertilizer
+  same for all three cylinders types
 - the null hypothesis would be that the population means of miles per gallon are the
-  same for each type of corn
-- the null hypothesis for the interaction effect (both corn and fertilizer
+  same for both manual and automatic cars
+- the null hypothesis for the interaction effect (both transmission and cylinder
   types) would be that there is **not** an interaction effect on miles per gallon
+  
+  
+Where as the alternative hypotheses would be the following:
+
+- at least one of the type of cylinders population mean of miles per gallon is
+  different from the others cylinders types
+- at least one of the type of transmission population mean of miles per gallon is
+  different from the others transmission types
+- there is an interaction effect on miles per gallon by transmission and cylinder types
 
 
 ## 3.	Visualization
 
-install and run the following package 'ggpubr' to run a two-way anova visualization of the data.
-
+You will need to install and run the following package 'ggpubr' to run a
+Two-Way ANOVA visualizations of the data.
+<span style="color: purple;">'Commit Here: state what you just did for your message'</span>
 
 ```{r}
 
@@ -178,14 +193,34 @@ ggboxplot(mod_mtcars, x = "cyl", y = "mpg", color = "am",
 ```
 #### Interpretation
 
+-Within each type of cylinder the transmission type always has a higher median 
+of miles per gallon except for when the number of cylinders is 8. It is about 
+the same
+- The amount variability of miles per gallon decreases as the number of 
+cylinders increase for manual cars
+- But the variability increases as the number of cylinders increase for 
+automatic cars
 
 
+<span style="color: purple;">'Commit Here: state what you just did for your message'</span>
 
 ```{r}
 ggline(mod_mtcars, x = "cyl", y = "mpg", color = "am",
        add = c("mean_se", "dotplot"),
        palette = c("#00AFBB", "#E7B800"))
 ```
+
+#### Interpretation
+
+- a clear difference can be seen between means of mpg when the number of 
+ is cylinders 4
+- the difference decreases as the number of cylinders increase
+
+<span style="color: purple;">'Commit Here: state what you just did for your message'</span>
+
+# Next Post ...
+
+- Summarization of data
 
 
 
