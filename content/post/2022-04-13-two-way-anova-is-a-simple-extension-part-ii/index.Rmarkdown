@@ -70,6 +70,7 @@ Notice how I used the abbreviated Cyl in the name of the description of the vari
 *mpg* decreases as the number of cylinders increases.
 - It is also important to note when the number of cylinders is 4
  the standard deviation is the greatest and is the smallest when the number of cylinders is 6
+- The sample size is not equal across the number of cylinders
 
 <span style="color: purple;">'Commit Here: state what you just did for your message'</span>
 
@@ -91,7 +92,7 @@ mod1_mtcars %>%
 is quite different for manual cars (manual's mean is greater than automatic's mean)
 - There is a great amount variability in miles per gallon for manual cars compare to automatic
 cars
-- the sample is not equal across groups
+- The sample size is not equal across transmission types
 
 ```{r}
 mod1_mtcars %>% 
@@ -105,3 +106,26 @@ mod1_mtcars %>%
 ```
 
 <span style="color: purple;">'Commit Here: state what you just did for your message'</span>
+
+#### Interpretation
+- This is quite interesting. It is important to note that an interaction term
+means that across all 6 groups(for example 1 group Transmission  = automatic and number of cylinders = 4) looks for whether there is a pattern across 1 explanatory variable while holding another constant.
+
+Alot right!
+
+Let's explore this idea, let's focus on manual cars only and investigate the mean of *mpg* as the number of cylinders increase. What do you notice?
+
+**The mean mile per gallon** decreases. Good!
+
+Now let's focus on automatic cars only and investigate the mean of *mpg* as the number of cylinders increase. What do you notice?
+
+**The mean mile per gallon** decreases. Good!
+
+So no matter what the transmission we are investigate **The mean mile per gallon** decreases. If you look closely the mean decreases at a similar rate.
+
+<span style="color: purple;">'Commit Here: state what you just did for your message'</span>
+
+## Next we will:
+
+- Explore the analysis of Two-Way ANOVA
+
