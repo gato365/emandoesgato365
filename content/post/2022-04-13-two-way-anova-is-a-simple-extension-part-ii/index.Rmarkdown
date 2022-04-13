@@ -65,6 +65,14 @@ mod1_mtcars %>%
 
 Notice how I used the abbreviated Cyl in the name of the description of the variable. I also provided a footnote that states what Cyl means. Abbreviate your explanatory variable to make the table look nice. (In order to add the footnote you must download and run 'kableExtra', you need to use *kable()* and *kable_styling()*).
 
+#### Interpretation
+- The basic interpretation of this summary was done within One-Way ANOVA in that the sample mean of 
+*mpg* decreases as the number of cylinders increases.
+- It is also important to note when the number of cylinders is 4
+ the standard deviation is the greatest and is the smallest when the number of cylinders is 6
+
+<span style="color: purple;">'Commit Here: state what you just did for your message'</span>
+
 ### Summary of 1 of the Explanatory Variables: Transmission
 ```{r}
 mod1_mtcars %>% 
