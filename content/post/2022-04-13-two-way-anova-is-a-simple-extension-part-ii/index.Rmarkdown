@@ -21,7 +21,7 @@ projects: []
 library(tidyverse)
 library(kableExtra)
 ```
-
+<span style="color: purple;">'Commit Here: state what you just did for your message'</span>
 
 ```{r}
 mod1_mtcars <- mtcars %>% 
@@ -31,27 +31,48 @@ mod1_mtcars <- mtcars %>%
            am == 0 ~ 'automatic'
          ))
 ```
+<span style="color: purple;">'Commit Here: state what you just did for your message'</span>
 
-### Summary of 1 of the Explanatory Variables 
+
+### Summary of 1 of the Explanatory Variables: Cylinders
 ```{r}
 mod1_mtcars %>% 
   group_by(cyl) %>% 
   summarise(`Sample Mean Cyl` = mean(mpg, na.rm = TRUE),
             `Sample SD Cyl` = sd(mpg, na.rm = TRUE),
-            `Sample Size` = n()) %>% 
+            `Sample Size Cyl` = n()) %>% 
   kable() %>% 
   kable_styling() %>% 
-  footnote('Cyl denotes the Cylinder')
+  footnote('Cyl denotes the Number of Cylinders')
 ```
+<span style="color: purple;">'Commit Here: state what you just did for your message'</span>
 
+Notice how I used the abbreviated Cyl in the name of the description of the variable. I also provided a footnote that states what Cyl means. Abbreviate your explanatory variable to make the table look nice. (In order to add the footnote you must download and run 'kableExtra', you need to use *kable()* and *kable_styling()*).
 
-Notice how I used the abbreviated Cyl in the name of the description of the variable. I also provided a footnote that states what Cyl means. Abbreviate your explanatory variable to make the table look nice. (In order to add the footnote you must download and run 'kableExtra').
-
-
+### Summary of 1 of the Explanatory Variables: Transmission
 ```{r}
 mod1_mtcars %>% 
   group_by(am) %>% 
   summarise(`Sample Mean AM` = mean(mpg, na.rm = TRUE),
             `Sample SD AM` = sd(mpg, na.rm = TRUE),
-            `Sample Size AM` = n())
+            `Sample Size AM` = n()) %>% 
+  kable() %>% 
+  kable_styling() %>% 
+  footnote('AM denotes the Transmission')
 ```
+<span style="color: purple;">'Commit Here: state what you just did for your message'</span>
+
+
+
+```{r}
+mod1_mtcars %>% 
+  group_by(am,cyl) %>% 
+  summarise(`Sample Mean both` = mean(mpg, na.rm = TRUE),
+            `Sample SD both` = sd(mpg, na.rm = TRUE),
+            `Sample Size both` = n()) %>% 
+  kable() %>% 
+  kable_styling() %>% 
+  footnote('both denotes groups based on the Transmission and Number of Cylinders')
+```
+
+<span style="color: purple;">'Commit Here: state what you just did for your message'</span>
