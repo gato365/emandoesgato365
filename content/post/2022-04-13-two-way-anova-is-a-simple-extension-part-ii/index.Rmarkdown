@@ -19,6 +19,7 @@ projects: []
 
 ```{r}
 library(tidyverse)
+library(kableExtra)
 ```
 
 
@@ -29,4 +30,16 @@ mod1_mtcars <- mtcars %>%
            am == 1 ~ 'manual',
            am == 0 ~ 'automatic'
          ))
+```
+
+### Summary of 1 of the Explanatory Variables 
+```{r}
+mod1_mtcars %>% 
+  group_by(cyl) %>% 
+  summarise(`Sample Mean Cyl` = mean(mpg, na.rm = TRUE),
+            `Sample SD Cyl` = sd(mpg, na.rm = TRUE),
+            `Sample Size` = n()) %>% 
+  kable() %>% 
+  kable_styling() %>% 
+  footnote('Cyl denotes the Cylinder')
 ```
