@@ -86,7 +86,12 @@ mod1_mtcars %>%
 ```
 <span style="color: purple;">'Commit Here: state what you just did for your message'</span>
 
-
+#### Interpretation
+- This summary we have not seen before when the mean of miles per gallon for automatic cars
+is quite different for manual cars (manual's mean is greater than automatic's mean)
+- There is a great amount variability in miles per gallon for manual cars compare to automatic
+cars
+- the sample is not equal across groups
 
 ```{r}
 mod1_mtcars %>% 
