@@ -3,9 +3,9 @@ title: Two-Way ANOVA is a simple extension (Part II)
 author: ''
 date: '2022-04-13'
 slug: two-way-anova-is-a-simple-extension-part-ii
-categories: []
+categories: [one way anova, statistics, concepts, R, sports, gato365, data science, two way anova, summary statistics,]
 tags: []
-subtitle: ''
+subtitle: 'Summarizing Data For Two-Way ANOVA'
 summary: ''
 authors: []
 lastmod: '2022-04-13T19:58:43Z'
@@ -17,12 +17,19 @@ image:
 projects: []
 ---
 
+# Instructions:
+Go through this post and implement the same strategy to summarize your data as post does for the *mtcars* data frame. You will need to install a package called 'kableExtra' which is used to make tables look aesthetically pleasing within R. Make the appropriate interpretations of your summary statistics as you create them.
+
+
 ```{r}
 library(tidyverse)
 library(kableExtra)
 ```
 <span style="color: purple;">'Commit Here: state what you just did for your message'</span>
 
+
+
+You should modify your data in the same way that you did in the last post to be able to visualize the data here. I did so for the *mtcars* data frame (made cyl into a factor and changed the level names for the transmission variable).
 ```{r}
 mod1_mtcars <- mtcars %>% 
   mutate(cyl = as.factor(cyl),
@@ -33,6 +40,15 @@ mod1_mtcars <- mtcars %>%
 ```
 <span style="color: purple;">'Commit Here: state what you just did for your message'</span>
 
+
+## General Approach
+Remember the purpose of Two-Way ANOVA is to test for three different effects on the response variable:
+
+1. Explanatory Variable 1
+2. Explanatory Variable 2
+3. The Interaction between both explanatory variables 
+
+In this example, the response variable is *mpg* and the explanatory variables are *cyl* (number of cylinders) and *am* (transmission type). It is imperative that you evaluate the visualizations and summary statistics before you implement any test (Friday's Post). 
 
 ### Summary of 1 of the Explanatory Variables: Cylinders
 ```{r}
