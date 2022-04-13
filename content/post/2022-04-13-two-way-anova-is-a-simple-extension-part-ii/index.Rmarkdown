@@ -43,3 +43,8 @@ mod1_mtcars %>%
   kable_styling() %>% 
   footnote('Cyl denotes the Cylinder')
 ```
+
+
+Notice how I used the abbreviated Cyl in the name of the description of the variable. I also provided a footnote that states what Cyl means. Abbreviate your explanatory variable to make the table look nice. (In order to add the footnote you must download and run 'kableExtra').
+
+
