@@ -18,11 +18,25 @@ projects: []
 ---
 
 
+# Instructions:
+This is a tough post so I am going to have you just implement this code on your data and
+you should try to interpret your results based on the p-values. 
+
+If your p-values is small ( less than 0.01) you can say there is a difference between the means, otherwise if the p-value is large (more than 0.01) we will conclude there is not enough evidence to indicate there is a difference between the group means.  
+
+You should use the same evaluation of using the p-value when discussing the interaction term.
+
+Read through this post as a guide to create your blog post.
+
+
+
 ```{r message=FALSE, warning=FALSE, include=FALSE}
 library(tidyverse)
 library(tidymodels)
 ```
 
+
+You should modify your data in the same way that you did in the last post to be able to visualize and summarize the data here. I did so for the *mtcars* data frame (made cyl into a factor and changed the level names for the transmission variable).
 ```{r}
 mod1_mtcars <- mtcars %>% 
   mutate(cyl = as.factor(cyl),
@@ -37,7 +51,8 @@ mod1_mtcars <- mtcars %>%
 ### Implementation of the Two-Way ANOVA Model
 
 #### Model 1
-Testing both variables independently
+Testing both variables (number of cylinders and transmission type) independently
+
 ```{r}
 model1 <- aov(mpg ~ cyl + am, mod1_mtcars)
 tidy(model1)
@@ -51,10 +66,10 @@ model2 <- aov(mpg ~ cyl * am, mod1_mtcars)
 tidy(model2)
 ```
 
-#### Model Comparison
-```{r}
-anova(model1,model2)
-```
+<!-- #### Model Comparison -->
+<!-- ```{r} -->
+<!-- anova(model1,model2) -->
+<!-- ``` -->
 
 
 
@@ -69,8 +84,15 @@ This can be quite confusing if you first look at it but if we break this down it
 This model tests whether cylinders and transmission have an impact on miles per gallon. We notice the following:
 
 - The number of cylinders have different means of miles per gallon due to the small p-value (2.476881e-09), this should not be a surprise because we saw this when we evaluate the results of One-Way ANOVA
-- There is also a difference in means of miles per gallon when evaluating transmission type because the p-value is also very small (5.845717e-02)
+- There is not a lot of evidence that there is a difference in means of miles per gallon when evaluating transmission type (automatic and manual) because the p-value (0.05845717) is greater than 0.01 
+
+### Model 2 Results
+
+This model tests whether cylinders and transmission have an impact on miles per gallon while also testing whether there is an interaction between the explanatory variable that impacts miles per gallon. We notice the following:
+
+- This models identifies the same conclusion regarding the impact of number of cylinders and type of transmission on the mean of miles per gallon as model 1
+- Since the p-value (0.269) is large for the interaction term (cyl:am) we will reject the importance of the interaction term
+- It is conclusive that only the number of cylinders has an impact on the miles per gallon
 
 
-Adding the interaction does not matter
 
