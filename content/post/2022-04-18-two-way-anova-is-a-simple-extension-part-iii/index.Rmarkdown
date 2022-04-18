@@ -33,3 +33,23 @@ mod1_mtcars <- mtcars %>%
 ```
 
 
+
+### Implementation of the Two-Way ANOVA Model
+
+#### Model 1
+```{r}
+model1 <- aov(mpg ~ cyl + am, mod1_mtcars)
+tidy(model1)
+```
+Testing both variables independently
+
+
+```{r}
+model2 <- aov(mpg ~ cyl * am, mod1_mtcars)
+tidy(model2)
+```
+Testing the interaction term
+
+
+## Explain results
+
