@@ -25,7 +25,7 @@ Go through this post and implement the same strategy to summarize your data as p
 library(tidyverse)
 library(kableExtra)
 ```
-<span style="color: purple;">'Commit Here: state what you just did for your message'</span>
+
 
 
 
@@ -38,9 +38,8 @@ mod1_mtcars <- mtcars %>%
            am == 0 ~ 'automatic'
          ))
 ```
-<span style="color: purple;">'Commit Here: state what you just did for your message'</span>
 
-
+<<<<<<< HEAD
 ## General Approach
 Remember the purpose of Two-Way ANOVA is to test for three different effects on the response variable:
 
@@ -51,20 +50,22 @@ Remember the purpose of Two-Way ANOVA is to test for three different effects on 
 In this example, the response variable is *mpg* and the explanatory variables are *cyl* (number of cylinders) and *am* (transmission type). It is imperative that you evaluate the visualizations and summary statistics before you implement any test (Friday's Post). 
 
 ### Summary of 1 of the Explanatory Variables: Cylinders
+=======
+### Summary of 1 of the Explanatory Variables 
+>>>>>>> parent of 8a45979... added summary information of the interaction term
 ```{r}
 mod1_mtcars %>% 
   group_by(cyl) %>% 
   summarise(`Sample Mean Cyl` = mean(mpg, na.rm = TRUE),
             `Sample SD Cyl` = sd(mpg, na.rm = TRUE),
-            `Sample Size Cyl` = n()) %>% 
+            `Sample Size` = n()) %>% 
   kable() %>% 
   kable_styling() %>% 
-  footnote('Cyl denotes the Number of Cylinders')
+  footnote('Cyl denotes the Cylinder')
 ```
-<span style="color: purple;">'Commit Here: state what you just did for your message'</span>
 
-Notice how I used the abbreviated Cyl in the name of the description of the variable. I also provided a footnote that states what Cyl means. Abbreviate your explanatory variable to make the table look nice. (In order to add the footnote you must download and run 'kableExtra', you need to use *kable()* and *kable_styling()*).
 
+<<<<<<< HEAD
 #### Interpretation
 - The basic interpretation of this summary was done within One-Way ANOVA in that the sample mean of 
 *mpg* decreases as the number of cylinders increases.
@@ -75,11 +76,17 @@ Notice how I used the abbreviated Cyl in the name of the description of the vari
 <span style="color: purple;">'Commit Here: state what you just did for your message'</span>
 
 ### Summary of 1 of the Explanatory Variables: Transmission
+=======
+Notice how I used the abbreviated Cyl in the name of the description of the variable. I also provided a footnote that states what Cyl means. Abbreviate your explanatory variable to make the table look nice. (In order to add the footnote you must download and run 'kableExtra').
+
+
+>>>>>>> parent of 8a45979... added summary information of the interaction term
 ```{r}
 mod1_mtcars %>% 
   group_by(am) %>% 
   summarise(`Sample Mean AM` = mean(mpg, na.rm = TRUE),
             `Sample SD AM` = sd(mpg, na.rm = TRUE),
+<<<<<<< HEAD
             `Sample Size AM` = n()) %>% 
   kable() %>% 
   kable_styling() %>% 
@@ -129,3 +136,7 @@ So no matter what the transmission we are investigate **The mean mile per gallon
 
 - Explore the analysis of Two-Way ANOVA
 
+=======
+            `Sample Size AM` = n())
+```
+>>>>>>> parent of 8a45979... added summary information of the interaction term
