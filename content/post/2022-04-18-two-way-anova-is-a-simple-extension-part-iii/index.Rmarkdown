@@ -1,0 +1,35 @@
+---
+title: Two-Way ANOVA is a simple extension (Part III)
+author: ''
+date: '2022-04-18'
+slug: two-way-anova-is-a-simple-extension-part-iii
+categories: [one way anova, statistics, concepts, R, sports, gato365, data science, two way anova, summary statistics, analysis]
+tags: []
+subtitle: ''
+summary: ''
+authors: []
+lastmod: '2022-04-18T16:27:09Z'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+
+```{r message=FALSE, warning=FALSE, include=FALSE}
+library(tidyverse)
+library(tidymodels)
+```
+
+```{r}
+mod1_mtcars <- mtcars %>% 
+  mutate(cyl = as.factor(cyl),
+         am = case_when(
+           am == 1 ~ 'manual',
+           am == 0 ~ 'automatic'
+         ))
+```
+
+
