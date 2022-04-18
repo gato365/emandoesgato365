@@ -62,5 +62,15 @@ anova(model1,model2)
 
 ## Explain results
 
+This can be quite confusing if you first look at it but if we break this down it will make a lot of sense:
+
+### Model 1 Results
+
+This model tests whether cylinders and transmission have an impact on miles per gallon. We notice the following:
+
+- The number of cylinders have different means of miles per gallon due to the small p-value (2.476881e-09), this should not be a surprise because we saw this when we evaluate the results of One-Way ANOVA
+- There is also a difference in means of miles per gallon when evaluating transmission type because the p-value is also very small (5.845717e-02)
+
+
 Adding the interaction does not matter
 
