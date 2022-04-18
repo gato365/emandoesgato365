@@ -46,6 +46,7 @@ mod1_mtcars <- mtcars %>%
          ))
 ```
 
+<span style="color: purple;">'Commit Here: made adjustments to data'</span>
 
 
 ### Implementation of the Two-Way ANOVA Model
@@ -57,6 +58,8 @@ Testing both variables (number of cylinders and transmission type) independently
 model1 <- aov(mpg ~ cyl + am, mod1_mtcars)
 tidy(model1)
 ```
+<span style="color: purple;">'Commit Here: ran model 1 to test both explanatory variables independently'</span>
+
 
 
 #### Model 2
@@ -65,6 +68,9 @@ Testing the interaction term
 model2 <- aov(mpg ~ cyl * am, mod1_mtcars)
 tidy(model2)
 ```
+
+
+<span style="color: purple;">'Commit Here: ran model 2 to test both explanatory variables  and the interaction term'</span>
 
 <!-- #### Model Comparison -->
 <!-- ```{r} -->
@@ -86,6 +92,9 @@ This model tests whether cylinders and transmission have an impact on miles per 
 - The number of cylinders have different means of miles per gallon due to the small p-value (2.476881e-09), this should not be a surprise because we saw this when we evaluate the results of One-Way ANOVA
 - There is not a lot of evidence that there is a difference in means of miles per gallon when evaluating transmission type (automatic and manual) because the p-value (0.05845717) is greater than 0.01 
 
+<span style="color: purple;">'Commit Here: Interpret model 1'</span>
+
+
 ### Model 2 Results
 
 This model tests whether cylinders and transmission have an impact on miles per gallon while also testing whether there is an interaction between the explanatory variable that impacts miles per gallon. We notice the following:
@@ -95,4 +104,5 @@ This model tests whether cylinders and transmission have an impact on miles per 
 - It is conclusive that only the number of cylinders has an impact on the miles per gallon
 
 
+<span style="color: purple;">'Commit Here: Interpret model 2'</span>
 
