@@ -28,6 +28,15 @@ After GATO365 Learning Center, you earn an internship with your local community 
 
 2. Run the following code to gain access to the relevant data frames
 
+```r
+library(readr)
+grades_url = 'https://raw.githubusercontent.com/gato365/emandoesgato365/main/content/post/2022-04-25-an-interview-test/grades.csv'
+assignments_url = 'https://raw.githubusercontent.com/gato365/emandoesgato365/main/content/post/2022-04-25-an-interview-test/assignments.csv' 
+students_url = 'https://raw.githubusercontent.com/gato365/emandoesgato365/main/content/post/2022-04-25-an-interview-test/students.csv'
+grades_df = read_csv(url(grades_url))
+assignments_df = read_csv(url(assignments_url))
+students_df = read_csv(url(students_url))
+```
 
 
 3. Explore each data frame and get familiar with the variables.

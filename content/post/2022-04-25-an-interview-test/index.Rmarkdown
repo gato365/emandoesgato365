@@ -27,7 +27,7 @@ After GATO365 Learning Center, you earn an internship with your local community 
 1. Install readr
 
 2. Run the following code to gain access to the relevant data frames
-```{r message=FALSE, warning=FALSE, include=FALSE}
+```{r echo=TRUE, message=FALSE, warning=FALSE}
 library(readr)
 grades_url = 'https://raw.githubusercontent.com/gato365/emandoesgato365/main/content/post/2022-04-25-an-interview-test/grades.csv'
 assignments_url = 'https://raw.githubusercontent.com/gato365/emandoesgato365/main/content/post/2022-04-25-an-interview-test/assignments.csv' 
