@@ -1,5 +1,5 @@
 ---
-title: An Interview Test (Part 1)
+title: An Interview Test (Part I)
 author: ''
 date: '2022-04-25'
 slug: an-interview-test
@@ -46,7 +46,7 @@ students_df = read_csv(url(students_url))
 
 ## Interview Questions 1:
 
-Q1. How many students are there? Make sure to check for duplicate students.
+Q1. How many students are there? Make sure to check for duplicate students. (Hint: Use the unique() function to check.)
 
 Q2. How many unique majors are there? How many students are in each major? 
 
