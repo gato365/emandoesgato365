@@ -1,0 +1,151 @@
+---
+title: "Untitled"
+author: "Immanuel"
+date: '2022-04-25'
+output: html_document
+---
+
+```{r}
+library(tidyverse)
+setwd("/cloud/project/content/post/2022-04-25-an-interview-test")
+```
+
+
+```{r}
+assignments_df = read.csv('assignments.csv')
+grades_df = read.csv('grades.csv')
+students_df = read.csv('students.csv')
+```
+
+
+
+Q1. How many students are there?
+```{r}
+length(unique(students_df$student_id))
+```
+
+Q2. How many unique majors are there? How many students are in each major?
+```{r}
+students_df %>% 
+  group_by(major) %>% 
+  summarise(count = n())
+```
+
+
+Q3. How many students are in each major by student level?
+
+```{r}
+students_df %>% 
+  group_by(major,student_level) %>% 
+  summarise(count = n())
+```
+
+Q4. [Challenge] Using the information from Q3., which major and student level has the least amount of students? (Hint: Use the ungroup() function.)
+
+```{r}
+students_df %>% 
+  group_by(major,student_level) %>% 
+  summarise(count = n()) %>% 
+  ungroup() %>% 
+  filter(count == min(count))
+```
+
+
+Q5. Create a visualization that displays the frequency of each major. Make this visualization look very professional (i.e., titles and color).
+```{r}
+students_df %>% 
+  group_by(major) %>% 
+  summarise(count = n()) %>% 
+  ggplot(aes(x = major, y = count, fill = major)) +
+  geom_bar(stat = 'identity') +
+  labs(x = 'Major', y = 'frequency', title = 'Frequency of Majors') +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = 'bold')) 
+
+```
+
+
+
+Q6. Create a visualization that displays the frequency of each major by student level. Make this visualization look very professional (i.e., titles and color). Change the size of the font so that it is presentable.
+
+
+```{r}
+students_df %>% 
+  group_by(student_level, major) %>% 
+  summarise(count = n()) %>% 
+  ggplot(aes(x = major, y = count, fill = major)) +
+  geom_bar(stat = 'identity') +
+  facet_grid(.~ student_level) +
+  labs(x = 'Major', y = 'frequency', title = 'Frequency of Majors') +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = 'bold'),
+        axis.text.x = element_text(size = 7)) 
+```
+
+
+
+Q7. Join the students data frame with grades data frame. Save this data frame with appropriate an appropriate name.
+
+```{r}
+gs_df = students_df %>% 
+  left_join(grades_df, by = 'student_id')
+```
+
+Q8. Of the English majors, who performed the worst on assignment 1?
+
+
+```{r}
+tmp_df = gs_df %>% 
+  filter(major == 'English', assignment_id == 1)  %>% 
+  filter(numeric_grade == min(numeric_grade))
+```
+
+
+Q9. Which assignment did the junior engineer students performed the best on average using their average numeric grade? (Hint: Have to use the ungroup() function again)
+```{r}
+gs_df %>% 
+  filter(student_level == '3-Junior',major == 'Engineering') %>% 
+  group_by(assignment_id) %>% 
+  summarise(m = mean(numeric_grade)) %>% 
+  ungroup() %>% 
+  filter(m == max(m))
+```
+
+
+Q10. Which student level performed the best as Statistics and Mathematics major using all their assignments average numeric grade?
+```{r}
+gs_df  %>% 
+  filter(major == 'Statistics and Math') %>% 
+  group_by(student_level) %>% 
+  summarise(m = mean(numeric_grade)) %>% 
+  ungroup() %>% 
+  filter(m == max(m))
+```
+
+
+Q11. Join the data frame from question 7 to the assignment data frame. Save this data frame with appropriate an appropriate name.
+```{r}
+complete_df = gs_df %>% 
+  left_join(assignments_df,by = 'assignment_id')
+```
+
+Q12. Provide a visualization that displays how students perform on Exams by major and student level. There are a lot of way to approach this question, however, I am interested in what you are able to create. Describe any trends you notice.
+```{r}
+viz_1_df = complete_df %>% 
+  filter(assignment_category == 'Exam') %>% 
+  group_by(major,student_level) %>% 
+  summarize(m = mean(numeric_grade))  %>% 
+  ungroup()
+
+
+viz_1_df %>% 
+  ggplot(aes(x = major, y = m,color = student_level)) +
+  geom_point() +
+  theme_bw()
+```
+
+
+Seniors do well in science and business
+Freshman struggle on business, engineering, english and philosophy compared to the rest of the major
+There is alot of variability in english
+students in general do better in statistic and math across all levels
