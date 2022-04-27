@@ -165,7 +165,7 @@ mod_kw_songs_df = kw_songs_df %>%
 ```
 
 
-We can look at energey and valence of the songs but I label the axes based on the mood
+We can look at energy and valence of the songs but I label the axes based on the mood
 ```{r}
 df = data.frame(x = c(0,1), y = c(0,1))
 p1 = df %>% 
