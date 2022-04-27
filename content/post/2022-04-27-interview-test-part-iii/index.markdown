@@ -25,7 +25,7 @@ It's time to implement a statistical technique on the data. Please answer today'
 ## Interview Question 3
 
 
-Q13. Using the data frame from question 11 and consider only freshmans' 2nd exam scores (Hint: investigate the *assignment_id* variable) and implement One-Way ANOVA in which you would like to determine if the populations means of performance on the exam (*numeric_grade*) are the same across major. Answer the following questions to be able to fully grasp the material.
+Q13. Using the data frame from question 11 and consider only freshmen 2nd exam scores (Hint: investigate the *assignment_id* variable) and implement One-Way ANOVA in which you would like to determine if the populations means of performance on the exam (*numeric_grade*) are the same across major. Answer the following questions to be able to fully grasp the material.
 
 
 a. Create the data frame that will allow you to answer the statistical question.
