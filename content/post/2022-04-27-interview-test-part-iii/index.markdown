@@ -3,8 +3,8 @@ title: Interview Test Part III
 author: ''
 date: '2022-04-27'
 slug: interview-test-part-iii
-categories: [one-way anova, tidyverse, ggplot]
-tags: [one-way anova, tidyverse, ggplot]
+categories: [one way anova, statistics, concepts, R, sports, gato365, datascience]
+tags: [one way anova, statistics, concepts, R, sports, gato365, datascience]
 subtitle: ''
 summary: ''
 authors: []

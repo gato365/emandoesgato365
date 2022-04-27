@@ -3,8 +3,8 @@ title: An Interview Test (Part II)
 author: ''
 date: '2022-04-26'
 slug: interview-test-part-ii
-categories: []
-tags: []
+categories: [SQL,statistics, concepts, R, sports, gato365, datascience, EMV]
+tags: [SQL,statistics, concepts, R, sports, gato365, datascience, EMV]
 subtitle: ''
 summary: ''
 authors: []

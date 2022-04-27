@@ -1,0 +1,157 @@
+---
+title: Two-Way ANOVA is a simple extension (Part II)
+author: ''
+date: '2022-04-13'
+slug: two-way-anova-is-a-simple-extension-part-ii
+categories: [one way anova, statistics, concepts, R, sports, gato365, data science, two way anova, summary statistics]
+tags: []
+subtitle: 'Summarizing Data For Two-Way ANOVA'
+summary: ''
+authors: []
+lastmod: '2022-04-13T19:58:43Z'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+# Instructions:
+Go through this post and implement the same strategy to summarize your data as post does for the *mtcars* data frame. You will need to install a package called 'kableExtra' which is used to make tables look aesthetically pleasing within R. Make the appropriate interpretations of your summary statistics as you create them.
+
+
+
+```r
+library(tidyverse)
+```
+
+```
+## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──
+```
+
+```
+## ✓ ggplot2 3.3.5     ✓ purrr   0.3.4
+## ✓ tibble  3.1.6     ✓ dplyr   1.0.8
+## ✓ tidyr   1.2.0     ✓ stringr 1.4.0
+## ✓ readr   2.1.2     ✓ forcats 0.5.1
+```
+
+```
+## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()
+```
+
+```r
+library(kableExtra)
+```
+
+```
+## 
+## Attaching package: 'kableExtra'
+```
+
+```
+## The following object is masked from 'package:dplyr':
+## 
+##     group_rows
+```
+
+
+
+
+You should modify your data in the same way that you did in the last post to be able to visualize the data here. I did so for the *mtcars* data frame (made cyl into a factor and changed the level names for the transmission variable).
+
+```r
+mod1_mtcars <- mtcars %>% 
+  mutate(cyl = as.factor(cyl),
+         am = case_when(
+           am == 1 ~ 'manual',
+           am == 0 ~ 'automatic'
+         ))
+```
+
+<<<<<<< HEAD
+## General Approach
+Remember the purpose of Two-Way ANOVA is to test for three different effects on the response variable:
+
+1. Explanatory Variable 1
+2. Explanatory Variable 2
+3. The Interaction between both explanatory variables 
+
+In this example, the response variable is *mpg* and the explanatory variables are *cyl* (number of cylinders) and *am* (transmission type). It is imperative that you evaluate the visualizations and summary statistics before you implement any test (Friday's Post). 
+
+### Summary of 1 of the Explanatory Variables: Cylinders
+=======
+### Summary of 1 of the Explanatory Variables 
+>>>>>>> parent of 8a45979... added summary information of the interaction term
+
+```r
+mod1_mtcars %>% 
+  group_by(cyl) %>% 
+  summarise(`Sample Mean Cyl` = mean(mpg, na.rm = TRUE),
+            `Sample SD Cyl` = sd(mpg, na.rm = TRUE),
+            `Sample Size` = n()) %>% 
+  kable() %>% 
+  kable_styling() %>% 
+  footnote('Cyl denotes the Cylinder')
+```
+
+<table class="table" style="margin-left: auto; margin-right: auto;border-bottom: 0;">
+ <thead>
+  <tr>
+   <th style="text-align:left;"> cyl </th>
+   <th style="text-align:right;"> Sample Mean Cyl </th>
+   <th style="text-align:right;"> Sample SD Cyl </th>
+   <th style="text-align:right;"> Sample Size </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> 4 </td>
+   <td style="text-align:right;"> 26.66364 </td>
+   <td style="text-align:right;"> 4.509828 </td>
+   <td style="text-align:right;"> 11 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 6 </td>
+   <td style="text-align:right;"> 19.74286 </td>
+   <td style="text-align:right;"> 1.453567 </td>
+   <td style="text-align:right;"> 7 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 8 </td>
+   <td style="text-align:right;"> 15.10000 </td>
+   <td style="text-align:right;"> 2.560048 </td>
+   <td style="text-align:right;"> 14 </td>
+  </tr>
+</tbody>
+<tfoot>
+<tr><td style="padding: 0; " colspan="100%"><span style="font-style: italic;">Note: </span></td></tr>
+<tr><td style="padding: 0; " colspan="100%">
+<sup></sup> Cyl denotes the Cylinder</td></tr>
+</tfoot>
+</table>
+
+
+<<<<<<< HEAD
+#### Interpretation
+- The basic interpretation of this summary was done within One-Way ANOVA in that the sample mean of 
+*mpg* decreases as the number of cylinders increases.
+- It is also important to note when the number of cylinders is 4
+ the standard deviation is the greatest and is the smallest when the number of cylinders is 6
+- The sample size is not equal across the number of cylinders
+
+<span style="color: purple;">'Commit Here: state what you just did for your message'</span>
+
+### Summary of 1 of the Explanatory Variables: Transmission
+=======
+Notice how I used the abbreviated Cyl in the name of the description of the variable. I also provided a footnote that states what Cyl means. Abbreviate your explanatory variable to make the table look nice. (In order to add the footnote you must download and run 'kableExtra').
+
+
+>>>>>>> parent of 8a45979... added summary information of the interaction term
+
+
+
+
