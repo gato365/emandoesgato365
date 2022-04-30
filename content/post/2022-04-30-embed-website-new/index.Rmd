@@ -22,8 +22,8 @@ output: html_document
 Hey
 
 
-<!-- ``` -->
-<!-- <iframe height="800" width="100%" frameborder="no" src="https://gato365.shinyapps.io/test/"> </iframe> -->
-<!-- ``` -->
+```
+<iframe height="800" width="100%" frameborder="no" src="https://gato365.shinyapps.io/test/"> </iframe>
+```
 
 
