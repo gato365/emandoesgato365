@@ -1,7 +1,7 @@
 ---
-title: I listen to the Roots wit Logan
+title: I listen to the Roots 
 author: ''
-date: '2022-04-15'
+date: '2022-05-15'
 slug: i-listen-to-the-roots
 categories: [the roots, data science, statistics, data visualizations]
 tags: []
