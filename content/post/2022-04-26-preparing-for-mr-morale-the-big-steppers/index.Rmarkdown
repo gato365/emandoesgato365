@@ -1,0 +1,197 @@
+---
+title: Preparing for Mr. Morale & the Big Steppers...Kendrick's New Album
+author: ''
+date: '2022-04-26'
+slug: preparing-for-mr-morale-the-big-steppers
+categories: []
+tags: []
+subtitle: ''
+summary: ''
+authors: []
+lastmod: '2022-04-26T18:37:00Z'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+
+```{r}
+library(tidyverse)
+library(spotifyr)
+library(scales)
+library(corrplot)
+library(gganimate)
+library(factoextra) 
+library(gifski)
+library(av)
+
+access_token <- get_spotify_access_token()
+```
+
+
+
+### Step 1: Extract the Data
+```{r}
+kl_df <- get_artist_audio_features('kendrick lamar') 
+```
+
+## Step 2: Standard Way 
+We need a standard way of obtaining a version of an album.
+
+So here are his albums:
+
+- Section.80 (2011)
+- Good Kid, M.A.A.D City (2012)
+- To Pimp a Butterfly (2015)
+- Damn (2017)
+
+We are going to include other non-albums:
+
+- Overly Dedicated
+- untitled unmastered.
+
+
+Other reasons to remove duplicate songs:
+
+- It is in the most markets (I cheated, by using > 100)
+- Remove songs that are on deluxe albums or none essential artists
+- Only explicit because it represents the artists true intention of the artist
+- No remix either
+
+
+```{r}
+important_albums_kl_df = kl_df %>% 
+  filter(!str_detect(album_name,'DAMN. COLLECTORS EDITION.|Black Panther|good kid, m.A.A.d city (Deluxe)|Deluxe')) %>% 
+  filter(!str_detect(track_name,'International Remix / Explicit|Bitch, Don’t Kill My Vibe - Remix')) %>% 
+  filter(explicit == TRUE) %>%
+  mutate(num_market = lengths(available_markets)) 
+
+df = important_albums_kl_df %>%
+  mutate(m1_valence = 2*valence - 1) %>% 
+  filter(num_market> 100)
+```
+
+
+
+
+```{r}
+value_var_df = df %>% 
+  select(danceability,energy,key,loudness,mode,
+         speechiness,acousticness,instrumentalness,
+         liveness,valence,tempo,duration_ms)
+
+
+value_var_df %>% 
+  cor() %>% 
+  corrplot()
+
+```
+
+
+```{r}
+g1 = df %>% 
+  ggplot(aes(x = loudness, y = energy, color = album_name )) +
+  geom_point(size = 1.6) +
+  scale_color_brewer(palette="Dark2") +
+  labs(x = 'Loudness', 
+       y = 'Energy', 
+       title = 'Kendrick Lamar\'s Last 5 Albums \n Energy and Loudness',
+       color = 'Albums') +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 18, face = 'bold'),
+        legend.title = element_text(hjust = 0.5,face = 'bold'),
+        axis.title = element_text(size = 15, face = 'bold'),
+        axis.text = element_text(size = 12, face = 'bold', color = 'black')
+        )
+ggsave('ken_energy_loud.png',g1)
+```
+
+A positive dB means that the sound is a few times louder than the threshold, while a negative dB means that you are a few times softer than that threshold. 
+
+
+
+```{r}
+color_text = 'white'
+df2 = data.frame(x = c(0,1), y = c(0,1))
+p1 = df2 %>% 
+  ggplot(aes(x = x, y = y)) +
+  geom_blank() +
+  geom_vline(xintercept = 0,size = 1) +
+  geom_hline(yintercept = 0.5,size = 1) +
+  scale_x_continuous(limits = c(-1,1), 
+                     expand = c(0, 0),
+                     labels = label_number(accuracy = 0.1)) +
+  scale_y_continuous(limits = c(0,1), expand = c(0, 0))  +
+  theme_bw() +
+  theme(axis.title = element_text(size = 18, face = 'bold')) +
+  geom_rect(aes(xmin=-1, xmax=0, ymin=0, ymax=1),alpha = 0.15, fill = 'red') + ## Angry
+  geom_rect(aes(xmin=-1, xmax=0, ymin=0, ymax=0.5),alpha = 0.15, fill = 'green') + ## Sad
+  geom_rect(aes(xmin=0, xmax=1, ymin=0.5, ymax=1),alpha = 0.3, fill = 'pink') + ## Happy
+  geom_rect(aes(xmin=0, xmax=1, ymin=0, ymax=0.5),alpha = 0.15, fill = 'blue') + ## Chill
+  labs(x = 'Valence',y='Energy') +
+  theme(axis.text = element_text(size = 12, face = 'bold'),
+        plot.margin = margin(0.3, 0.5, 0.1, 0.5, "cm")
+  ) +
+  annotate("text", x=-0.5, y=0.25, label= "Sad",size = 15.5, color = color_text) +
+  annotate("text", x=0.55, y=0.25, label= "Chill",size = 15.5, color = color_text) +
+  annotate("text", x=-0.5, y=0.75, label= "Anger",size = 15.5, color = color_text) +
+  annotate("text", x=0.55, y=0.75, label= "Happy",size = 15.5, color = color_text)
+
+```
+
+
+
+
+
+```{r}
+g2 = p1 +
+  geom_point(data = df,aes(x = m1_valence  , y = energy,color = album_name),size = 1.6) +
+  scale_color_brewer(palette="Dark2") +
+  labs(title = 'Kendrick Lamar\'s Last 5 Albums \n Mood',color = 'Albums') +
+  theme(plot.title = element_text(hjust = 0.5, size = 18, face = 'bold'),
+        legend.title = element_text(hjust = 0.5,face = 'bold'))
+ggsave('ken_mood.png',g2)
+```
+
+
+
+
+```{r}
+p2 = ve_plot + transition_time(album_release_year) 
+p3 = animate(p2, fps = 5,duration = 10)
+anim_save("cat_1_lvl_A.gif", p3)
+
+# g = ve_plot +
+# transition_time(album_release_year) +
+#   labs(title = "Year: {frame_time}")
+```
+
+```{r}
+fviz_nbclust(value_var_df, kmeans, method = "wss")
+```
+
+
+
+```{r}
+k2 <- kmeans(value_var_df, centers = 4, nstart = 25)
+fviz_cluster(k2,value_var_df)
+```
+
+
+```{r}
+mod1_value_var_df = value_var_df %>% 
+  mutate(classes = k2$cluster) %>% 
+  select(classes,duration_ms) %>% 
+  right_join(df,'duration_ms') %>% 
+  mutate(mood = case_when(
+    energy <= 0.5 & valence <= 0.5 ~ 'Sad',
+    energy <= 0.5 & valence > 0.5 ~ 'Chill',
+    energy > 0.5 & valence <= 0.5 ~ 'Angry',
+    energy > 0.5 & valence > 0.5 ~ 'Happy'
+  )) #%>% 
+# select(track_name,classes,album_name,mood)
+```
+

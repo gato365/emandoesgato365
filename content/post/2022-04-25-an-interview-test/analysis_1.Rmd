@@ -7,6 +7,8 @@ output: html_document
 
 ```{r}
 library(tidyverse)
+library(broom)
+library(ggpubr)
 setwd("/cloud/project/content/post/2022-04-25-an-interview-test")
 ```
 
@@ -146,6 +148,142 @@ viz_1_df %>%
 
 
 Seniors do well in science and business
-Freshman struggle on business, engineering, english and philosophy compared to the rest of the major
-There is alot of variability in english
+Freshman struggle on business, engineering, English and philosophy compared to the rest of the major
+There is a lot of variability in English
 students in general do better in statistic and math across all levels
+
+
+
+Q13. Using the data frame from question 11, consider only freshman 2nd exam scores (Hint: investigate the *assignment_id* variable) and implement One-Way ANOVA in which you would like to determine if the populations means of performance on the assessment (*numeric_grade*) are the same across major. Answer the following questions to be able to fully grasp the material.
+
+
+a. Create the data frame that will allow you to answer the statistical question.
+
+```{r}
+oneway_aov_df =  complete_df %>% 
+  filter(student_level == '1-Freshmen',
+         assignment_category == 'Exam',
+         assignment_id == 20)
+View(oneway_aov_df)
+```
+
+b. What is the explanatory and response variables?
+
+- Explanatory Variable: major
+- Response Variable: numeric_grade
+
+c. Write the null and alternative hypotheses?
+
+- H0: The populations means of performance on the assessment (*numeric_grade*) are the same across major
+- H1: At least one of the populations means of performance on the assessment (*numeric_grade*) of one major is different from the other majors
+
+d. Summarize (Hint: find sample size, mean, standard deviation) and Visualize Data (Hint: box plot and make it look professional).
+## Summarize
+```{r}
+oneway_aov_df %>% 
+  group_by(major) %>% 
+  summarise(size = n(),
+            mean = mean(numeric_grade),
+            sd = sd(numeric_grade))
+```
+
+## Visualize 
+```{r}
+oneway_aov_df %>% 
+  ggplot(aes(x = major, y = numeric_grade)) +
+  geom_boxplot() +
+  labs(x = 'Major', y = 'Grade', title = 'Grades by Major') +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, face = 'bold', size = 15))
+```
+
+
+
+e. Perform and interpret the analysis.
+
+## Perform Analysis
+```{r}
+model1 <- aov(numeric_grade ~ major, oneway_aov_df)
+tidy(model1)
+```
+
+
+## Interpretation Analysis
+Weak amount of Evidence against the null hypothesis that the populations means of performance on the assessment (*numeric_grade*) are the same across major
+
+
+
+
+Q14. Using the data frame from question 11, consider only freshman exam scores and implement Two-Way ANOVA in which you would like to determine if the populations means of performance on the assessment (*numeric_grade*) are the same across major and exam number (Hint: turn the *assignment_id* variable into a factor by using the as.factor() function). Answer the following questions to be able to fully grasp the material.
+
+
+a. Create the data frame that will allow you to answer the statistical question.
+
+```{r}
+twoway_aov_df =  complete_df %>% 
+  filter(student_level == '1-Freshmen',
+         assignment_category == 'Exam'
+         ) %>% 
+  mutate(assignment_id = as.factor(assignment_id))
+View(twoway_aov_df)
+```
+
+b. What is the explanatory variables and response variable?
+
+- Explanatory Variable: major and exam number
+- Response Variable: numeric_grade
+
+c. Write the null and alternative hypotheses for both explanatory variables?
+
+- H0: The populations means of performance on the assessment (*numeric_grade*) are the same across major
+- H1: At least one of the populations means of performance on the assessment (*numeric_grade*) of one major is different from the other majors
+
+
+- H0: The populations means of performance on the assessment (*numeric_grade*) are the same across exam number
+- H1: At least one of the populations means of performance on the assessment (*numeric_grade*) of one exam number is different from the other exam number
+
+
+d. Summarize (Hint: find sample size, mean, standard deviation) and Visualize Data (Hint: box plot and make it look professional).
+## Summarize
+```{r}
+twoway_aov_df %>% 
+  group_by(major,assignment_id) %>% 
+  summarise(size = n(),
+            mean = mean(numeric_grade),
+            sd = sd(numeric_grade))
+```
+
+## Visualize 
+```{r}
+
+
+ggboxplot(twoway_aov_df, x = "major", y = "numeric_grade", color = "assignment_id",
+          palette = c("#00AFBB", "#E7B800")) +
+  labs(x = 'Major', y = 'Performance on Exams by Freshmen', title = 'Box Plot for Two-Way ANOVA with means') +
+  theme(plot.title = element_text(hjust = 0.5, face = 'bold', size = 15),
+        axis.text.x = element_text(size = 10) )
+```
+
+
+```{r}
+ggline(twoway_aov_df, x = "major", y = "numeric_grade", color = "assignment_id",
+       add = c("mean_se", "dotplot"),
+       palette = c("#00AFBB", "#E7B800"))
+```
+
+
+
+e. Perform and interpret the analysis.
+
+## Perform Analysis
+```{r}
+model2 <- aov(numeric_grade ~ major + assignment_id, twoway_aov_df)
+summary(model2)
+```
+
+
+## Interpretation Analysis
+
+Strong amount of evidence against the null hypothesis that the populations means of performance on the assessment (*numeric_grade*) are the same across major
+
+No evidence against the null hypothesis that the populations means of performance on the assessment (*numeric_grade*) are the same across exam number

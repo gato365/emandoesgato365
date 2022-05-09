@@ -1,0 +1,13 @@
+name: testing_Embedded
+title: testing_Embedded
+username:
+account: gato365
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 6265303
+bundleId: 5887576
+url: https://gato365.shinyapps.io/testing_Embedded/
+when: 1652114220.37599
+lastSyncTime: 1652114220.376
+asMultiple: FALSE
+asStatic: FALSE
