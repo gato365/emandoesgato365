@@ -26,15 +26,15 @@ After giving more than 6 data science presentations in California these are some
 
 ### In my classroom
 I use data science in my classroom to give students performance reports. Below is an example of how a student compared with their classmates.
-```{r echo=FALSE, out.width="45%", out.hesight="35%", fig.align='center' }
+```{r echo=FALSE, out.width="55%", out.hesight="45%", fig.align='center' }
 
 knitr::include_graphics("exam_image.png")
 ```
 
 
 
-Below is another example of how I measure my students regardin specific concepts they learn in class.
-```{r echo=FALSE, out.width="45%", out.hesight="35%", fig.align='center' }
+Below is another example of how I measure my students regarding specific concepts they learn in class.
+```{r echo=FALSE, out.width="65%", out.hesight="47.5%", fig.align='center' }
 
 knitr::include_graphics("table_grades.png")
 ```
@@ -43,7 +43,7 @@ knitr::include_graphics("table_grades.png")
 ### In my life
 I use data science to evaluate many aspects of my life. Below is a graph of my weight back in 2019.
 
-```{r echo=FALSE, out.width="45%", out.hesight="35%", fig.align='center' }
+```{r echo=FALSE, out.width="55%", out.hesight="45%", fig.align='center' }
 
 knitr::include_graphics("weight.png")
 ```
@@ -51,13 +51,13 @@ knitr::include_graphics("weight.png")
 
 
 Another example of using data science in my life is by tracking my goals throughout the week.
-```{r echo=FALSE, out.width="45%", out.hesight="35%", fig.align='center' }
+```{r echo=FALSE, out.width="55%", out.hesight="45%", fig.align='center' }
 
 knitr::include_graphics("mood_image.png")
 ```
 
 
-```{r echo=FALSE, out.width="45%", out.hesight="35%", fig.align='center' }
+```{r echo=FALSE, out.width="50%", out.hesight="55%", fig.align='center' }
 
 knitr::include_graphics("mood_descrip.png")
 ```

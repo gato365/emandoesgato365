@@ -26,26 +26,26 @@ After giving more than 6 data science presentations in California these are some
 
 ### In my classroom
 I use data science in my classroom to give students performance reports. Below is an example of how a student compared with their classmates.
-<img src="exam_image.png" width="45%" style="display: block; margin: auto;" />
+<img src="exam_image.png" width="55%" style="display: block; margin: auto;" />
 
 
 
-Below is another example of how I measure my students regardin specific concepts they learn in class.
-<img src="table_grades.png" width="45%" style="display: block; margin: auto;" />
+Below is another example of how I measure my students regarding specific concepts they learn in class.
+<img src="table_grades.png" width="65%" style="display: block; margin: auto;" />
 
 
 ### In my life
 I use data science to evaluate many aspects of my life. Below is a graph of my weight back in 2019.
 
-<img src="weight.png" width="45%" style="display: block; margin: auto;" />
+<img src="weight.png" width="55%" style="display: block; margin: auto;" />
 
 
 
 Another example of using data science in my life is by tracking my goals throughout the week.
-<img src="mood_image.png" width="45%" style="display: block; margin: auto;" />
+<img src="mood_image.png" width="55%" style="display: block; margin: auto;" />
 
 
-<img src="mood_descrip.png" width="45%" style="display: block; margin: auto;" />
+<img src="mood_descrip.png" width="50%" style="display: block; margin: auto;" />
 
 
 ## **Q2. Are there communities for women in data science?**
