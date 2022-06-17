@@ -1,0 +1,25 @@
+---
+title: My memory of e...
+author: ''
+date: '2022-06-17'
+slug: my-memory-of-e
+categories: []
+tags: []
+subtitle: ''
+summary: ''
+authors: []
+lastmod: '2022-06-17T04:03:35Z'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+
+
+
+Learning
+
+<iframe height="800" width="100%" frameborder="no" src="https://gato365.shinyapps.io/eIsTestingMemory/"> </iframe>
