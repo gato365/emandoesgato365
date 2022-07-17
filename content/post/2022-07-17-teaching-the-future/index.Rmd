@@ -1,0 +1,29 @@
+---
+title: Teaching the future
+author: ''
+date: '2022-07-17'
+slug: teaching-the-future
+categories: [r shiny, data science, statistics, Cal Poly, Admission]
+tags: []
+subtitle: ''
+summary: ''
+authors: []
+lastmod: '2022-07-17T15:32:26Z'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+
+
+I love teaching! My **HIGH** School intern was able to create this R-Shiny (Web Application). I provided him the data and he went to work. He spent about 3 weeks
+designing the R Shiny and making it look nice. I can't wait to see what he creates next.
+
+
+
+
+
+<iframe height="800" width="100%" frameborder="no" src="https://gato365.shinyapps.io/whoGoesToCalPoly/"> </iframe>
