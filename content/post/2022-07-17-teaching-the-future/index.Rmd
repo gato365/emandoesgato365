@@ -26,4 +26,4 @@ designing the R Shiny and making it look nice. I can't wait to see what he creat
 
 [Website](https://gato365.shinyapps.io/whoGoesToCalPoly/)
 
-<iframe height="800%" width="100%" frameborder="no" src="https://gato365.shinyapps.io/whoGoesToCalPoly/"> </iframe>
+<iframe height="800%" width="150%" frameborder="no" src="https://gato365.shinyapps.io/whoGoesToCalPoly/"> </iframe>
